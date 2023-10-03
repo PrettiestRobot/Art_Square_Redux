@@ -9,7 +9,7 @@ const typeDefs = `
 
   type Post {
     _id: ID
-    postText: String
+    postName: String
     postAuthor: String
     createdAt: String
     comments: [Comment]!
@@ -37,7 +37,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!, postAuthor: String!): Post
+    addPost(postName: String!, postAuthor: String!): Post
     addComment(
       postId: ID!
       commentText: String!

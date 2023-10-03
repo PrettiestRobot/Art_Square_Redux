@@ -8,7 +8,7 @@ import { QUERY_POSTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const PostForm = () => {
-  const [postText, setPostText] = useState("");
+  const [postName, setPostText] = useState("");
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -22,7 +22,7 @@ const PostForm = () => {
     try {
       const { data } = await addPost({
         variables: {
-          postText,
+          postName,
           postAuthor: Auth.getProfile().data.username,
         },
       });
@@ -36,7 +36,7 @@ const PostForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "postText" && value.length <= 280) {
+    if (name === "postName" && value.length <= 280) {
       setPostText(value);
       setCharacterCount(value.length);
     }
@@ -61,9 +61,9 @@ const PostForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="postText"
+                name="postName"
                 placeholder="Here's a new post..."
-                value={postText}
+                value={postName}
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}

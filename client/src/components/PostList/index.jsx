@@ -18,7 +18,7 @@ const PostList = ({ posts, title }) => {
               </span>
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{post.postText}</p>
+              <p>{post.postName}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
