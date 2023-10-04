@@ -1,0 +1,22 @@
+.card-container {
+  display: flex;
+  position: relative;
+}
+.card-container img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.3s;
+}
+.card-container:hover .gallery-image:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 584px) {
+  .card-container:hover .gallery-image:hover {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=PostCard.css.map */

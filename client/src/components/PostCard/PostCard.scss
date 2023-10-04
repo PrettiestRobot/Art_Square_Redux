@@ -1,0 +1,24 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.card-container {
+  display: flex;
+  position: relative;
+  img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+    border: none;
+    border-radius: 0;
+    transition: transform 0.3s;
+  }
+  &:hover {
+    .gallery-image:hover {
+      transform: scale(1.05);
+      @media (max-width: 584px) {
+        transform: scale(1);
+      }
+    }
+  }
+}
