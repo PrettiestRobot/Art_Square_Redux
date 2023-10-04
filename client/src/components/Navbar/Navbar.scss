@@ -1,0 +1,38 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+nav {
+  @include center-flexbox();
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 56px;
+  z-index: 9;
+
+  background-color: $main-bg;
+  .nav-contents {
+    color: $primary-text;
+    padding: 8px 24px;
+    width: 100%;
+    max-width: 1920px;
+    @include spread-flexbox();
+
+    .nav-right {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}
+
+.nav-brand {
+  height: 25px;
+}

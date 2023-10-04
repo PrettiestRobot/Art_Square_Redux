@@ -1,0 +1,43 @@
+// Background
+$main-bg: hsl(0, 0%, 9%);
+$secondary-bg: hsl(0, 0%, 15%);
+$tertiary-bg: hsl(0, 0%, 20%);
+$hover-main-bg: hsl(0, 0%, 12%);
+$hover-secondary-bg: hsl(0, 0%, 18%);
+$hover-tertiary-bg: hsl(0, 0%, 23%);
+
+// Text
+$primary-text: hsl(0, 0%, 95%);
+$secondary-text: hsl(0, 0%, 75%);
+$placeholder-text: hsl(0, 0%, 60%);
+$hover-primary-text: hsl(0, 0%, 98%);
+$hover-secondary-text: hsl(0, 0%, 78%);
+$hover-placeholder-text: hsl(0, 0%, 63%);
+
+// Accents (Bauhaus often used primary colors)
+$primary-accent: hsl(0, 100%, 50%); // Red
+$secondary-accent: hsl(225, 100%, 50%); // Blue
+$tertiary-accent: hsl(60, 100%, 50%); // Yellow
+$hover-primary-accent: hsl(0, 100%, 53%);
+$hover-secondary-accent: hsl(225, 100%, 53%);
+$hover-tertiary-accent: hsl(60, 100%, 53%);
+
+// Borders & Dividers
+$border-color: hsl(0, 0%, 25%);
+$divider-color: hsl(0, 0%, 30%);
+$hover-border-color: hsl(0, 0%, 28%);
+$hover-divider-color: hsl(0, 0%, 33%);
+
+// Feedback
+$success: hsl(104, 52%, 45%); // A shade of green
+$warning: hsl(41, 100%, 50%); // Orange
+$error: hsl(5, 74%, 41%); // Dark red
+$info: hsl(209, 85%, 38%); // A shade of blue
+$hover-success: hsl(104, 52%, 48%);
+$hover-warning: hsl(41, 100%, 53%);
+$hover-error: hsl(5, 74%, 44%);
+$hover-info: hsl(209, 85%, 41%);
+
+// Others
+$avatar-bg: hsl(0, 0%, 29%);
+$hover-avatar-bg: hsl(0, 0%, 32%);
