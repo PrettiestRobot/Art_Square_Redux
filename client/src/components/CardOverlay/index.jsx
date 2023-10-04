@@ -9,7 +9,7 @@ const CardOverlay = ({ postName, postAuthor }) => {
           <img src={ProfileImage}></img>
         </div>
         <div className="card-user-username">{postAuthor}</div>
-        <div className="card-user-username">{postName}</div>
+        {/* <div className="card-user-username">{postName}</div> */}
       </a>
     </div>
   );
