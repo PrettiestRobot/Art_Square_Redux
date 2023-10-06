@@ -25,15 +25,22 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postName: String!, $postAuthor: String!) {
-    addPost(postName: $postName, postAuthor: $postAuthor) {
+  mutation addPost(
+    $postName: String!
+    $postAuthor: String!
+    $imageUrl: String!
+  ) {
+    addPost(postName: $postName, postAuthor: $postAuthor, imageUrl: $imageUrl) {
       _id
       postName
       postAuthor
+      imageUrl
       createdAt
       comments {
         _id
         commentText
+        commentAuthor
+        createdAt
       }
     }
   }
@@ -53,6 +60,7 @@ export const ADD_COMMENT = gql`
       _id
       postName
       postAuthor
+      imageUrl
       createdAt
       comments {
         _id

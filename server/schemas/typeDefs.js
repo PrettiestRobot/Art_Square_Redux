@@ -11,6 +11,7 @@ const typeDefs = `
     _id: ID
     postName: String
     postAuthor: String
+    imageUrl: String
     createdAt: String
     comments: [Comment]!
   }
@@ -37,7 +38,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postName: String!, postAuthor: String!): Post
+    addPost(postName: String!, postAuthor: String! imageUrl: String!): Post
     addComment(
       postId: ID!
       commentText: String!

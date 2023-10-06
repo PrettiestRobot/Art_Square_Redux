@@ -1,11 +1,11 @@
 import "./PostCard.css";
 import CardOverlay from "../CardOverlay";
 
-const PostCard = ({ postName, postAuthor }) => {
+const PostCard = ({ postName, postAuthor, imageUrl }) => {
   return (
     <>
       <div className="card-container">
-        <img src="https://placehold.co/250"></img>
+        <img src={imageUrl}></img>
         <CardOverlay postName={postName} postAuthor={postAuthor} />
       </div>
     </>

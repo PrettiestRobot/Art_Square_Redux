@@ -14,6 +14,11 @@ const postSchema = new Schema({
     required: true,
     trim: true,
   },
+  imageUrl: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -25,7 +30,7 @@ const postSchema = new Schema({
         type: String,
         required: true,
         minlength: 1,
-        maxlength: 280,
+        maxlength: 60,
       },
       commentAuthor: {
         type: String,

@@ -8,37 +8,49 @@ import { QUERY_POSTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const PostForm = () => {
-  const [postName, setPostText] = useState("");
+  const [formState, setFormState] = useState({
+    postName: "",
+    imageUrl: "",
+  });
 
   const [characterCount, setCharacterCount] = useState(0);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    if (name === "postName" && value.length <= 60) {
+      setCharacterCount(value.length);
+    }
+  };
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     refetchQueries: [QUERY_POSTS, "getPosts"],
   });
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-      const { data } = await addPost({
+      const response = await addPost({
         variables: {
-          postName,
+          postName: formState.postName,
           postAuthor: Auth.getProfile().data.username,
+          imageUrl: formState.imageUrl,
         },
       });
 
-      setPostText("");
+      console.log("Post created:", response.data.addPost);
+
+      setFormState({
+        postName: "",
+        imageUrl: "",
+      });
     } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    if (name === "postName" && value.length <= 280) {
-      setPostText(value);
-      setCharacterCount(value.length);
+      console.error("Error creating post:", err);
     }
   };
 
@@ -50,10 +62,10 @@ const PostForm = () => {
         <>
           <p
             className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
+              characterCount === 60 || error ? "text-danger" : ""
             }`}
           >
-            Character Count: {characterCount}/280
+            Character Count: {characterCount}/60
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -63,11 +75,17 @@ const PostForm = () => {
               <textarea
                 name="postName"
                 placeholder="Here's a new post..."
-                value={postName}
+                value={formState.postName}
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}
               ></textarea>
+              <input
+                name="imageUrl"
+                placeholder="imageUrl..."
+                value={formState.imageUrl}
+                onChange={handleChange}
+              ></input>
             </div>
 
             <div className="col-12 col-lg-3">
