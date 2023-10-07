@@ -4,6 +4,8 @@
 .card-container {
   display: flex;
   position: relative;
+  overflow: hidden;
+
   img {
     width: 100%;
     aspect-ratio: 1/1;
@@ -11,14 +13,11 @@
     display: block;
     border: none;
     border-radius: 0;
-    transition: transform 0.3s;
+    transition: transform 0.75s;
   }
-  &:hover {
-    .gallery-image:hover {
-      transform: scale(1.05);
-      @media (max-width: 584px) {
-        transform: scale(1);
-      }
-    }
+
+  &:hover img {
+    transform: scale(1.05);
+    transition: transform 0.75s;
   }
 }

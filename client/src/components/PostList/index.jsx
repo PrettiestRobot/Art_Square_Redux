@@ -15,7 +15,7 @@ const PostList = ({ posts }) => {
             <div key={post._id} className="gallery-item">
               <PostCard
                 postName={post.postName}
-                postAuthor={post.postAuthor}
+                postAuthor={post.postAuthor.username}
                 imageUrl={post.imageUrl}
               />
             </div>

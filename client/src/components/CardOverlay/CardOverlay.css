@@ -22,7 +22,7 @@
 .card-overlay:hover .card-user-info {
   opacity: 1;
   transform: translateY(0px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, transform 0.5s;
 }
 .card-overlay .card-user-info {
   display: flex;

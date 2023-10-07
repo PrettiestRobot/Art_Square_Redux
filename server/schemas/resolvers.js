@@ -11,10 +11,10 @@ const resolvers = {
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+      return Post.find(params).sort({ createdAt: -1 }).populate("postAuthor");
     },
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+      return Post.findOne({ _id: postId }).populate("postAuthor");
     },
   },
 
@@ -41,16 +41,29 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { postName, postAuthor, imageUrl }) => {
-      const post = await Post.create({ postName, postAuthor, imageUrl });
+    addPost: async (parent, { postName, imageUrl, userId }, context) => {
+      // Fetch the user based on the provided userId
+      const user = await User.findById(userId);
 
-      await User.findOneAndUpdate(
-        { username: postAuthor },
-        { $addToSet: { posts: post._id } }
-      );
+      // If no user is found with the provided userId, throw an error
+      if (!user) {
+        throw new Error("User not found!");
+      }
+
+      // Create a new Post with the fetched user as the postAuthor
+      const post = await Post.create({
+        postName,
+        postAuthor: user, // Here, you set the entire User object as the postAuthor
+        imageUrl,
+      });
+
+      await User.findByIdAndUpdate(userId, {
+        $addToSet: { posts: post._id },
+      });
 
       return post;
     },
+
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
       return Post.findOneAndUpdate(
         { _id: postId },

@@ -38,8 +38,8 @@ const PostForm = () => {
       const response = await addPost({
         variables: {
           postName: formState.postName,
-          postAuthor: Auth.getProfile().data.username,
           imageUrl: formState.imageUrl,
+          userId: Auth.getProfile().data._id,
         },
       });
 
@@ -56,7 +56,7 @@ const PostForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>Hello</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -72,6 +72,7 @@ const PostForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
+              {Auth.getProfile().data._id}
               <textarea
                 name="postName"
                 placeholder="Here's a new post..."

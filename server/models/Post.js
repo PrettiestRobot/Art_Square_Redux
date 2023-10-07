@@ -10,9 +10,9 @@ const postSchema = new Schema({
     trim: true,
   },
   postAuthor: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true,
-    trim: true,
   },
   imageUrl: {
     type: String,
