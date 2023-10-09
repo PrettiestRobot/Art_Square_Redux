@@ -55,24 +55,20 @@ const PostForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-post-container">
       <h3>Hello</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
+            className={`count-validation ${
               characterCount === 60 || error ? "text-danger" : ""
             }`}
           >
             Character Count: {characterCount}/60
           </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
+          <form className="form-add-post" onSubmit={handleFormSubmit}>
             <div className="col-12 col-lg-9">
-              {Auth.getProfile().data._id}
               <textarea
                 name="postName"
                 placeholder="Here's a new post..."

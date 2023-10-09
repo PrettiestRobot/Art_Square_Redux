@@ -13,13 +13,22 @@ const typeDefs = `
     postAuthor: User!
     imageUrl: String
     createdAt: String
+    ratings: [Rating]!
     comments: [Comment]!
+    averageRating: Float
   }
 
   type Comment {
     _id: ID
     commentText: String
     commentAuthor: String
+    createdAt: String
+  }
+
+  type Rating {
+    _id: ID
+    rating: Int
+    ratingAuthor: User!
     createdAt: String
   }
 
@@ -33,6 +42,7 @@ const typeDefs = `
     user(username: String!): User
     posts(username: String): [Post]
     post(postId: ID!): Post
+    ratings(postId: ID!): [Rating]
   }
 
   type Mutation {
@@ -46,6 +56,7 @@ const typeDefs = `
     ): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    addRating(postId: ID!, rating: Int!, ratingAuthor: ID!): Post
   }
 `;
 

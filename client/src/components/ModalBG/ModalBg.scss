@@ -1,0 +1,107 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.modal-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.modal-bg-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  transform: rotate(-45deg);
+  transition: 0.5s;
+}
+
+.modal-bg-left {
+  position: relative;
+  display: flex;
+  width: 50vw;
+  height: 100vh;
+}
+
+.modal-bg-one {
+  display: flex;
+  position: absolute;
+  background-color: $primary-accent;
+  width: 200vw;
+  height: 400vw;
+  transform: translateX(-200vw);
+  top: -60vh;
+  right: 0;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
+  @include respond-to(mobile) {
+    width: 200vh;
+    height: 200vh;
+  }
+  &.active {
+    transform: translateX(0vw);
+
+    transition: 1s;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+.modal-bg-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-right-bottom,
+.modal-right-top {
+  display: flex;
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+}
+
+.modal-bg-two {
+  position: absolute;
+  background-color: $secondary-accent;
+  transform: translateY(-100vw);
+  bottom: 0;
+  left: 0;
+  width: 200vw;
+  height: 200vw;
+  transition: 1s;
+  transition-timing-function: ease-in-out;
+  @include respond-to(mobile) {
+    width: 200vh;
+    height: 200vh;
+  }
+
+  &.active {
+    transform: translateY(0vw);
+    bottom: 0;
+    left: 0;
+    transition: 1s;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+.modal-bg-three {
+  position: absolute;
+  background-color: $tertiary-accent;
+  width: 200vw;
+  height: 200vh;
+  transform: translateX(100vw);
+  transition: 1s;
+  transition-timing-function: ease-in-out;
+  @include respond-to(mobile) {
+    width: 200vh;
+    height: 200vh;
+  }
+
+  &.active {
+    transform: translateX(0vw);
+    top: 0;
+    left: 0;
+    transition: 1s;
+    transition-timing-function: ease-in-out;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.rating-container {
+  @include center-flexbox(row);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(52px);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.rating-item {
+  height: 52px;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background-color: $secondary-accent;
+  color: #ffffff;
+  &:hover,
+  &.active {
+    background-color: $hover-secondary-accent;
+  }
+  @media (max-width: 584px) {
+    width: calc(100% / 5);
+    aspect-ratio: 1/1;
+  }
+}

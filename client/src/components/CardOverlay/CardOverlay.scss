@@ -27,15 +27,18 @@
     }
   }
   .card-user-info {
-    display: flex;
+    @include spread-flexbox(row);
     position: absolute;
     top: 0;
     left: 0;
-    align-items: center;
+    width: 100%;
     padding: 8px;
     opacity: 0;
     transform: translateY(-52px);
     transition: opacity 0.3s, transform 0.3s;
+    .card-profile-info {
+      @include center-flexbox(row);
+    }
     .card-user-image {
       @include center-flexbox(row);
       height: 32px;
@@ -55,4 +58,14 @@
       font-size: 16px;
     }
   }
+}
+
+.card-post-average {
+  color: white;
+}
+
+.card-expand-button {
+  color: white;
+  height: 18px;
+  width: 18px;
 }

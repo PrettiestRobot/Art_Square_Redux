@@ -42,6 +42,7 @@ export const QUERY_SINGLE_POST = gql`
       }
       imageUrl
       createdAt
+      averageRating
       comments {
         _id
         commentText

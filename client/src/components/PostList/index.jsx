@@ -17,6 +17,7 @@ const PostList = ({ posts }) => {
                 postName={post.postName}
                 postAuthor={post.postAuthor.username}
                 imageUrl={post.imageUrl}
+                postId={post._id}
               />
             </div>
           ))}

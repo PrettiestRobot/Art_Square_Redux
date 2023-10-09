@@ -1,0 +1,71 @@
+@import "../assets/styles/Variables";
+@import "../assets/styles/Mixins";
+
+* {
+  transition-timing-function: ease-in-out;
+}
+
+form {
+  @include center-flexbox(column);
+  background-color: $primary-text;
+  padding: 16px 24px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  gap: 8px;
+  z-index: 0;
+  transform: translateY(3vh);
+  transition: 0.5s;
+  opacity: 0;
+  border-radius: 10px;
+  button {
+    font-weight: 600;
+    color: $primary-text;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.15rem;
+    border: 1px solid transparent;
+    background-color: $primary-accent;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &:hover {
+      background-color: $hover-primary-accent;
+    }
+  }
+}
+
+.modal-container {
+  @include center-flexbox(column);
+  position: fixed;
+  padding: 24px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  z-index: 10;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    form {
+      transform: translateY(0);
+      opacity: 1;
+      transition: 0.5s 0.5s;
+    }
+  }
+}
+
+.input-container {
+  width: 25vw;
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  font-weight: 600;
+  input {
+    border-radius: 4px;
+    border: 1px solid $primary-accent;
+    padding: 8px;
+  }
+}

@@ -42,18 +42,15 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, { postName, imageUrl, userId }, context) => {
-      // Fetch the user based on the provided userId
       const user = await User.findById(userId);
 
-      // If no user is found with the provided userId, throw an error
       if (!user) {
         throw new Error("User not found!");
       }
 
-      // Create a new Post with the fetched user as the postAuthor
       const post = await Post.create({
         postName,
-        postAuthor: user, // Here, you set the entire User object as the postAuthor
+        postAuthor: user,
         imageUrl,
       });
 
@@ -76,6 +73,18 @@ const resolvers = {
         }
       );
     },
+    addRating: async (parent, { postId, rating, ratingAuthor }) => {
+      return Post.findOneAndUpdate(
+        { _id: postId },
+        {
+          $addToSet: { ratings: { rating, ratingAuthor } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
     },
@@ -85,6 +94,22 @@ const resolvers = {
         { $pull: { comments: { _id: commentId } } },
         { new: true }
       );
+    },
+  },
+
+  Post: {
+    averageRating: async (parent) => {
+      // 'parent' contains the current post object
+      const ratings = parent.ratings;
+
+      // Check if there are no ratings
+      if (!ratings.length) return 0;
+
+      // Sum up all ratings
+      const total = ratings.reduce((acc, curr) => acc + curr.rating, 0);
+
+      // Return average
+      return total / ratings.length;
     },
   },
 };

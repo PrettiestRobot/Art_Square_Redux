@@ -68,3 +68,27 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const ADD_RATING = gql`
+  mutation addRating($postId: ID!, $rating: Int!, $ratingAuthor: ID!) {
+    addRating(postId: $postId, rating: $rating, ratingAuthor: $ratingAuthor) {
+      _id
+      postName
+      postAuthor {
+        _id
+        username
+      }
+      imageUrl
+      createdAt
+      ratings {
+        _id
+        rating
+        ratingAuthor {
+          _id
+          username
+        }
+        createdAt
+      }
+    }
+  }
+`;
