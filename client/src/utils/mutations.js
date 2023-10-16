@@ -100,3 +100,27 @@ export const ADD_RATING = gql`
     }
   }
 `;
+
+export const ADD_FOLLOW = gql`
+  mutation AddFollow($userId: ID!, $followedId: ID!) {
+    addFollow(userId: $userId, followedId: $followedId) {
+      id
+      followed {
+        id
+        username
+      }
+    }
+  }
+`;
+
+export const REMOVE_FOLLOW = gql`
+  mutation RemoveFollow($userId: ID!, $followedId: ID!) {
+    removeFollowed(userId: $userId, followedId: $followedId) {
+      id
+      followed {
+        id
+        username
+      }
+    }
+  }
+`;

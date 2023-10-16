@@ -5,6 +5,7 @@ const typeDefs = `
     email: String
     password: String
     posts: [Post]!
+    followed: [User]
   }
 
   type Post {
@@ -50,6 +51,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addFollow(userId: ID!, followedId: ID!): User
     addPost(postName: String! imageUrl: String! userId: ID!): Post
     addComment(
       postId: ID!
@@ -59,6 +61,7 @@ const typeDefs = `
     ): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    removeFollow(userId: ID!, followedId: ID!): User
     addRating(postId: ID!, rating: Int!, ratingAuthor: ID!): Post
   }
 `;

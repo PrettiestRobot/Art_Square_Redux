@@ -4,13 +4,13 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("posts");
+      return User.find().populate(["posts", "followed"]);
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+      return User.findOne({ username }).populate(["posts", "followed"]);
     },
     userById: async (parent, { id }) => {
-      return User.findById(id).populate("posts");
+      return User.findById(id).populate(["posts", "followed"]);
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -43,6 +43,14 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addFollow: async (parent, { userId, followedId }) => {
+      const user = await User.findById(userId);
+      if (!user.followed.includes(followerId)) {
+        user.followed.push(followedId);
+        await user.save();
+      }
+      return user;
     },
     addPost: async (parent, { postName, imageUrl, userId }, context) => {
       const user = await User.findById(userId);
@@ -90,6 +98,15 @@ const resolvers = {
           runValidators: true,
         }
       );
+    },
+    removeFollow: async (parent, { userId, followedId }) => {
+      const user = await User.findById(userId);
+      const index = user.followed.indexOf(followedId);
+      if (index > -1) {
+        user.followed.splice(index, 1);
+        await user.save();
+      }
+      return user;
     },
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
