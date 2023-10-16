@@ -1,0 +1,14 @@
+@import "./assets/styles/Variables";
+@import "./assets/styles/Mixins";
+
+body {
+  background-color: $main-bg;
+}
+
+.main-container {
+  padding-top: 56px;
+  @include center-flexbox(column);
+  width: 100%;
+  min-height: 100vh;
+  justify-content: flex-start;
+}

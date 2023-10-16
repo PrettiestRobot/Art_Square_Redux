@@ -1,0 +1,14 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.comment-form-container {
+  background-color: $secondary-bg;
+  color: $primary-text;
+
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem 1rem;
+  .comment-form {
+    @include spread-flexbox(row);
+  }
+}

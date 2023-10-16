@@ -1,0 +1,43 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.single-post-page {
+  @include center-flexbox(column);
+  max-width: 812px;
+  padding-top: 24px;
+  .single-post-container {
+    .single-post-header {
+      background-color: $secondary-bg;
+      color: $primary-text;
+      width: 100%;
+      margin: 0;
+      padding: 1.5rem 1rem;
+      .single-post-sub-head {
+        font-size: 1rem;
+      }
+    }
+    .single-post-image-container {
+      width: 100%;
+      overflow: hidden;
+      .single-post-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        display: block;
+        border: none;
+        border-radius: 0;
+        transition: transform 0.75s;
+      }
+    }
+  }
+}
+
+.comments-container {
+  width: 100%;
+  @include center-flexbox(column);
+}
+
+.single-post {
+  border-radius: 18px;
+  overflow: hidden;
+}

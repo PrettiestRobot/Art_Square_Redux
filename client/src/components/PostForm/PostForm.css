@@ -1,3 +1,13 @@
 .form-post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form-post-container .form-add-post {
+  max-width: 828px;
+}
+.form-post-container .form-add-post button {
   width: 100%;
 }/*# sourceMappingURL=PostForm.css.map */

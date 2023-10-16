@@ -6,6 +6,7 @@ import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
+import "./PostForm.css";
 
 const PostForm = () => {
   const [formState, setFormState] = useState({
@@ -68,28 +69,26 @@ const PostForm = () => {
             Character Count: {characterCount}/60
           </p>
           <form className="form-add-post" onSubmit={handleFormSubmit}>
-            <div className="col-12 col-lg-9">
-              <textarea
-                name="postName"
-                placeholder="Here's a new post..."
-                value={formState.postName}
-                className="form-input w-100"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleChange}
-              ></textarea>
-              <input
-                name="imageUrl"
-                placeholder="imageUrl..."
-                value={formState.imageUrl}
-                onChange={handleChange}
-              ></input>
-            </div>
+            <textarea
+              name="postName"
+              placeholder="Here's a new post..."
+              value={formState.postName}
+              className="form-input"
+              style={{ lineHeight: "1.5", resize: "vertical" }}
+              onChange={handleChange}
+            ></textarea>
+            <input
+              name="imageUrl"
+              placeholder="imageUrl..."
+              value={formState.imageUrl}
+              className="form-input"
+              onChange={handleChange}
+            ></input>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Post
-              </button>
-            </div>
+            <button className="btn post-btn" type="submit">
+              Add Post
+            </button>
+
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}

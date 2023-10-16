@@ -1,47 +1,62 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import "./CommentForm.css";
 
 import { ADD_COMMENT } from "../../utils/mutations";
+import { QUERY_SINGLE_POST } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
-const CommentForm = ({ postId }) => {
-  const [commentText, setCommentText] = useState("");
+const CommentForm = ({ thisPostId }) => {
+  const [formState, setFormState] = useState({
+    commentText: "",
+  });
+
   const [characterCount, setCharacterCount] = useState(0);
-
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const { data } = await addComment({
-        variables: {
-          postId,
-          commentText,
-          commentAuthor: Auth.getProfile().data.username,
-        },
-      });
-
-      setCommentText("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
     if (name === "commentText" && value.length <= 60) {
-      setCommentText(value);
       setCharacterCount(value.length);
     }
   };
 
+  const [addComment, { error }] = useMutation(ADD_COMMENT, {
+    refetchQueries: [QUERY_SINGLE_POST, "getSinglePost"],
+  });
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await addComment({
+        variables: {
+          postId: thisPostId,
+          commentText: formState.commentText,
+          commentAuthor: Auth.getProfile().data._id,
+          username: Auth.getProfile().data.username,
+        },
+      });
+
+      console.log("Post created:", response.data.addPost);
+
+      setFormState({
+        commentText: "",
+      });
+    } catch (err) {
+      console.error("Error creating post:", err);
+    }
+  };
+
   return (
-    <div>
-      <h4>What are your posts on this post?</h4>
+    <div className="comment-form-container">
+      <h4>What are your thoughts on this post?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -53,15 +68,12 @@ const CommentForm = ({ postId }) => {
             Character Count: {characterCount}/60
             {error && <span className="ml-2">{error.message}</span>}
           </p>
-          <form
-            className="flex-row justify-center justify-space-between-md align-center"
-            onSubmit={handleFormSubmit}
-          >
+          <form className="comment-form" onSubmit={handleFormSubmit}>
             <div className="col-12 col-lg-9">
               <textarea
                 name="commentText"
                 placeholder="Add your comment..."
-                value={commentText}
+                value={formState.commentText}
                 className="form-input w-100"
                 style={{ lineHeight: "1.5", resize: "vertical" }}
                 onChange={handleChange}

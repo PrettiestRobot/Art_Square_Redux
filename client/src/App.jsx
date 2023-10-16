@@ -1,3 +1,4 @@
+import "./Reset.css";
 import "./App.css";
 import {
   ApolloClient,
@@ -38,9 +39,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="">
         <Navbar />
-        <div className="container">
+        <div className="main-container">
           <Outlet />
         </div>
         <Footer />

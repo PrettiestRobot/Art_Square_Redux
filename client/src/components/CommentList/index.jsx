@@ -1,28 +1,59 @@
+import "./CommentList.css";
+
+import ProfileImage from "../../assets/images/profile.jpg";
+
 const CommentList = ({ comments = [] }) => {
   if (!comments.length) {
-    return <h3>No Comments Yet</h3>;
+    return <h3 className="comment-list-header">No Comments Yet</h3>;
   }
+
+  // return (
+  //   <>
+  //     <h3 className="comment-list-header">Comments</h3>
+  //     <div className="comment-list-container">
+  //       {comments &&
+  //         comments.map((comment) => (
+  //           <div key={comment._id} className="comments-container">
+  //             <div className="comment-content">
+  //               <div className="comment-profile-container">
+  //                 <div className="comment-profile-image">
+  //                   <img src={ProfileImage}></img>
+  //                 </div>
+  //                 <div className="comment-profile">
+  //                   <h5 className="">
+  //                     {comment.username} <br></br>
+  //                     <span className="comment-date">{comment.createdAt}</span>
+  //                   </h5>
+  //                 </div>
+  //               </div>
+  //               <div className="comment-text-box">
+  //                 <p className="card-body">{comment.commentText}</p>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         ))}
+  //     </div>
+  //   </>
+  // );
 
   return (
     <>
-      <h3
-        className="p-5 display-inline-block"
-        style={{ borderBottom: '1px dotted #1a1a1a' }}
-      >
-        Comments
-      </h3>
-      <div className="flex-row my-4">
+      <h3 className="comment-list-header">Comments</h3>
+      <div className="comment-list-container">
         {comments &&
           comments.map((comment) => (
-            <div key={comment._id} className="col-12 mb-3 pb-3">
-              <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">
-                  {comment.commentAuthor} commented{' '}
-                  <span style={{ fontSize: '0.825rem' }}>
-                    on {comment.createdAt}
-                  </span>
+            <div key={comment._id} className="comment-container">
+              <div className="comment-profile-image">
+                <img src={ProfileImage}></img>
+              </div>
+              <div className="comment-content">
+                <h5>
+                  {comment.username} <br></br>
+                  <span className="comment-date">{comment.createdAt}</span>
                 </h5>
-                <p className="card-body">{comment.commentText}</p>
+                <div className="comment-text-box">
+                  <p className="card-body">{comment.commentText}</p>
+                </div>
               </div>
             </div>
           ))}

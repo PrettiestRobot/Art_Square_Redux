@@ -1,0 +1,13 @@
+.comment-form-container {
+  background-color: hsl(0, 0%, 15%);
+  color: hsl(0, 0%, 95%);
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem 1rem;
+}
+.comment-form-container .comment-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}/*# sourceMappingURL=CommentForm.css.map */

@@ -1,0 +1,7 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.layout-container {
+  @include center-flexbox(row);
+  width: 100%;
+}

@@ -21,8 +21,9 @@ const typeDefs = `
   type Comment {
     _id: ID
     commentText: String
-    commentAuthor: String
+    commentAuthor: User!
     createdAt: String
+    username: String
   }
 
   type Rating {
@@ -40,6 +41,7 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
+    userById(id: ID!): User
     posts(username: String): [Post]
     post(postId: ID!): Post
     ratings(postId: ID!): [Rating]
@@ -52,7 +54,8 @@ const typeDefs = `
     addComment(
       postId: ID!
       commentText: String!
-      commentAuthor: String!
+      commentAuthor: ID!
+      username: String!
     ): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post

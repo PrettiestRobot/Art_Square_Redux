@@ -16,6 +16,23 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_USER_BY_ID = gql`
+  query userById($id: ID!) {
+    userById(id: $id) {
+      _id
+      username
+      email
+      posts {
+        _id
+        postName
+        imageUrl
+        createdAt
+        averageRating
+      }
+    }
+  }
+`;
+
 export const QUERY_POSTS = gql`
   query getPosts {
     posts {
@@ -47,6 +64,10 @@ export const QUERY_SINGLE_POST = gql`
         _id
         commentText
         createdAt
+        commentAuthor {
+          _id
+        }
+        username
       }
     }
   }

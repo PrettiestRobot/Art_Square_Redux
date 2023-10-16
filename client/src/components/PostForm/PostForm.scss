@@ -2,5 +2,12 @@
 @import "../../assets/styles/Mixins";
 
 .form-post-container {
+  @include center-flexbox(column);
   width: 100%;
+  .form-add-post {
+    max-width: 828px;
+    button {
+      width: 100%;
+    }
+  }
 }

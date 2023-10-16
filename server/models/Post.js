@@ -48,13 +48,19 @@ const postSchema = new Schema({
         maxlength: 60,
       },
       commentAuthor: {
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true,
       },
       createdAt: {
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
+      },
+      username: {
+        type: String,
+        required: true,
+        trim: true,
       },
     },
   ],

@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import "./PostList.css";
 import PostCard from "../PostCard";
+import Auth from "../../utils/auth";
 
 const PostList = ({ posts }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
+
+  const authId = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
 
   return (
     <div className="gallery">
@@ -16,8 +19,10 @@ const PostList = ({ posts }) => {
               <PostCard
                 postName={post.postName}
                 postAuthor={post.postAuthor.username}
+                postAuthorId={post.postAuthor._id}
                 imageUrl={post.imageUrl}
                 postId={post._id}
+                authId={authId}
               />
             </div>
           ))}

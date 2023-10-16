@@ -9,6 +9,9 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("posts");
     },
+    userById: async (parent, { id }) => {
+      return User.findById(id).populate("posts");
+    },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Post.find(params).sort({ createdAt: -1 }).populate("postAuthor");
@@ -61,11 +64,14 @@ const resolvers = {
       return post;
     },
 
-    addComment: async (parent, { postId, commentText, commentAuthor }) => {
+    addComment: async (
+      parent,
+      { postId, commentText, commentAuthor, username }
+    ) => {
       return Post.findOneAndUpdate(
         { _id: postId },
         {
-          $addToSet: { comments: { commentText, commentAuthor } },
+          $addToSet: { comments: { commentText, commentAuthor, username } },
         },
         {
           new: true,
