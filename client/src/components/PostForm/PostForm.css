@@ -4,10 +4,42 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: hsl(0, 0%, 15%);
+  padding: 1rem;
+}
+.form-post-container .count-validation {
+  color: hsl(0, 0%, 95%);
 }
 .form-post-container .form-add-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
   max-width: 828px;
 }
 .form-post-container .form-add-post button {
   width: 100%;
+}
+.form-post-container .post-form-login {
+  color: hsl(0, 0%, 95%);
+}
+
+.hidden {
+  display: none;
+}
+
+.post-form-input {
+  width: 100%;
+  padding: 0.75rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  font-size: 1.2rem;
+  border: 1px solid #484848;
+  border-radius: 0.3rem;
+}
+
+.post-form-input:focus {
+  outline: none;
+  border-color: hsl(0, 0%, 75%);
 }/*# sourceMappingURL=PostForm.css.map */

@@ -4,10 +4,39 @@
 .form-post-container {
   @include center-flexbox(column);
   width: 100%;
+  background-color: $secondary-bg;
+  padding: 1rem;
+  .count-validation {
+    color: $primary-text;
+  }
   .form-add-post {
+    @include center-flexbox(column);
+    gap: 0.625rem;
     max-width: 828px;
     button {
       width: 100%;
     }
   }
+  .post-form-login {
+    color: $primary-text;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.post-form-input {
+  width: 100%;
+  padding: 0.75rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  font-size: 1.2rem;
+  border: 1px solid #484848;
+  border-radius: 0.3rem;
+}
+
+.post-form-input:focus {
+  outline: none;
+  border-color: $secondary-text;
 }

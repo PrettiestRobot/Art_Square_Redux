@@ -57,14 +57,12 @@ const PostForm = () => {
 
   return (
     <div className="form-post-container">
-      <h3>Hello</h3>
-
       {Auth.loggedIn() ? (
         <>
           <p
             className={`count-validation ${
-              characterCount === 60 || error ? "text-danger" : ""
-            }`}
+              characterCount === 0 || error ? "hidden" : ""
+            } ${characterCount === 60 || error ? "text-danger" : ""}`}
           >
             Character Count: {characterCount}/60
           </p>
@@ -73,7 +71,7 @@ const PostForm = () => {
               name="postName"
               placeholder="Here's a new post..."
               value={formState.postName}
-              className="form-input"
+              className="post-form-input"
               style={{ lineHeight: "1.5", resize: "vertical" }}
               onChange={handleChange}
             ></textarea>
@@ -81,7 +79,7 @@ const PostForm = () => {
               name="imageUrl"
               placeholder="imageUrl..."
               value={formState.imageUrl}
-              className="form-input"
+              className="post-form-input"
               onChange={handleChange}
             ></input>
 
@@ -97,7 +95,7 @@ const PostForm = () => {
           </form>
         </>
       ) : (
-        <p>
+        <p className="post-form-login">
           You need to be logged in to share your posts. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
