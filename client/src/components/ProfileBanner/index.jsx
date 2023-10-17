@@ -1,8 +1,24 @@
 import "./ProfileBanner.css";
 import profileImage from "../../assets/images/profile.jpg";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_FOLLOW } from "../../utils/mutations";
+import { IS_USER_FOLLOWED } from "../../utils/queries";
+import Auth from "../../utils/auth";
 
 const ProfileBanner = ({ user, userRating }) => {
-  console.log(user);
+  const userId = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
+
+  const [addFollow] = useMutation(ADD_FOLLOW);
+
+  const { data: followData } = useQuery(IS_USER_FOLLOWED, {
+    variables: { userId: userId, followedId: user._id },
+  });
+
+  const handleAddFollow = (followedId) => {
+    addFollow({ variables: { userId, followedId } });
+  };
+
+  console.log(Auth.getProfile().data);
 
   return (
     <div className="profile-banner">
@@ -15,10 +31,15 @@ const ProfileBanner = ({ user, userRating }) => {
         <div className="text-info">
           <div className="banner-username">
             <div className="username">{user.username}</div>
-            <button className="follow-btn">
-              <span className="follow">Follow</span>
-              <span className="mobile-follow">+</span>
-            </button>
+            {userId !== user._id && !followData?.isUserFollowed ? (
+              <button
+                className="follow-btn"
+                onClick={() => handleAddFollow(user._id)}
+              >
+                <span className="follow">Follow</span>
+                <span className="mobile-follow">+</span>
+              </button>
+            ) : null}
           </div>
           <div className="banner-account-info">
             <p className="general-info">

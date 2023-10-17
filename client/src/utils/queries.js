@@ -72,3 +72,9 @@ export const QUERY_SINGLE_POST = gql`
     }
   }
 `;
+
+export const IS_USER_FOLLOWED = gql`
+  query IsUserFollowed($userId: ID!, $followedId: ID!) {
+    isUserFollowed(userId: $userId, followedId: $followedId)
+  }
+`;

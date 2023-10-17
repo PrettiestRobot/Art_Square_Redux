@@ -19,6 +19,10 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId }).populate("postAuthor");
     },
+    isUserFollowed: async (_, { userId, followedId }) => {
+      const user = await User.findById(userId);
+      return user.followed.includes(followedId);
+    },
   },
 
   Mutation: {
@@ -46,7 +50,7 @@ const resolvers = {
     },
     addFollow: async (parent, { userId, followedId }) => {
       const user = await User.findById(userId);
-      if (!user.followed.includes(followerId)) {
+      if (!user.followed.includes(followedId)) {
         user.followed.push(followedId);
         await user.save();
       }

@@ -46,6 +46,7 @@ const typeDefs = `
     posts(username: String): [Post]
     post(postId: ID!): Post
     ratings(postId: ID!): [Rating]
+    isUserFollowed(userId: ID!, followedId: ID!): Boolean!
   }
 
   type Mutation {
