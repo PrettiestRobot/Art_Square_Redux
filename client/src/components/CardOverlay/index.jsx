@@ -1,7 +1,7 @@
 import "./CardOverlay.css";
 import Rating from "../Rating";
 import { useQuery } from "@apollo/client";
-import { QUERY_SINGLE_POST } from "../../utils/queries";
+import { QUERY_SINGLE_POST, QUERY_USER_BY_ID } from "../../utils/queries";
 import { Link } from "react-router-dom";
 
 import ProfileImage from "../../assets/images/profile.jpg";
@@ -22,7 +22,7 @@ const CardOverlay = ({ postAuthor, postId, postAuthorId, authId }) => {
       <div className="card-user-info">
         <Link to={`/profile/${postAuthorId}`} className="card-profile-info">
           <div className="card-user-image">
-            <img src={ProfileImage}></img>
+            <img src={post.postAuthor.profilePicture}></img>
           </div>
           <div className="card-user-username">{postAuthor}</div>
         </Link>

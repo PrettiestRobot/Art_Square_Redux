@@ -37,7 +37,11 @@ export const ADD_POST = gql`
       comments {
         _id
         commentText
-        commentAuthor
+        commentAuthor {
+          _id
+          username
+          profilePicture
+        }
         createdAt
       }
     }
@@ -119,6 +123,27 @@ export const REMOVE_FOLLOW = gql`
       followed {
         _id
       }
+    }
+  }
+`;
+
+export const UPDATE_USERNAME = gql`
+  mutation UpdateUsername($userId: ID!, $newUsername: String!) {
+    updateUsername(userId: $userId, newUsername: $newUsername) {
+      _id
+      username
+    }
+  }
+`;
+
+export const UPDATE_PROFILE_PICTURE = gql`
+  mutation UpdateProfilePicture($userId: ID!, $newProfilePicture: String!) {
+    updateProfilePicture(
+      userId: $userId
+      newProfilePicture: $newProfilePicture
+    ) {
+      _id
+      profilePicture
     }
   }
 `;

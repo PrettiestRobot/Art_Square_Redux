@@ -17,7 +17,9 @@ const resolvers = {
       return Post.find(params).sort({ createdAt: -1 }).populate("postAuthor");
     },
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId }).populate("postAuthor");
+      return Post.findOne({ _id: postId })
+        .populate("postAuthor")
+        .populate("comments.commentAuthor");
     },
     isUserFollowed: async (_, { userId, followedId }) => {
       const user = await User.findById(userId);
@@ -119,6 +121,22 @@ const resolvers = {
       return Post.findOneAndUpdate(
         { _id: postId },
         { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
+    },
+
+    async updateUsername(_, { userId, newUsername }) {
+      return await User.findByIdAndUpdate(
+        userId,
+        { username: newUsername },
+        { new: true }
+      );
+    },
+
+    async updateProfilePicture(_, { userId, newProfilePicture }) {
+      return await User.findByIdAndUpdate(
+        userId,
+        { profilePicture: newProfilePicture },
         { new: true }
       );
     },

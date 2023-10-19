@@ -1,8 +1,8 @@
-import "./CommentList.css";
+import "./FollowList.css";
 
 import ProfileImage from "../../assets/images/profile.jpg";
 
-const CommentList = ({ comments = [] }) => {
+const FollowList = ({ comments = [] }) => {
   if (!comments.length) {
     return <h3 className="comment-list-header">No Comments Yet</h3>;
   }
@@ -33,4 +33,4 @@ const CommentList = ({ comments = [] }) => {
   );
 };
 
-export default CommentList;
+export default FollowList;

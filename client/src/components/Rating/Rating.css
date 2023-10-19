@@ -22,7 +22,10 @@
   color: #ffffff;
 }
 .rating-item:hover, .rating-item.active {
-  background-color: hsl(225, 100%, 53%);
+  background-color: hsl(0, 100%, 50%);
+}
+.rating-item:hover {
+  transform: translateY(-8px);
 }
 @media (max-width: 584px) {
   .rating-item {

@@ -22,7 +22,10 @@
   color: #ffffff;
   &:hover,
   &.active {
-    background-color: $hover-secondary-accent;
+    background-color: $primary-accent;
+  }
+  &:hover {
+    transform: translateY(-8px);
   }
   @media (max-width: 584px) {
     width: calc(100% / 5);

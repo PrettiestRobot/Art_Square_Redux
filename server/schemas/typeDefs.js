@@ -4,6 +4,7 @@ const typeDefs = `
     username: String
     email: String
     password: String
+    profilePicture: String
     posts: [Post]!
     followed: [User]
   }
@@ -60,6 +61,8 @@ const typeDefs = `
       commentAuthor: ID!
       username: String!
     ): Post
+      updateUsername(userId: ID!, newUsername: String!): User
+  updateProfilePicture(userId: ID!, newProfilePicture: String!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     removeFollow(userId: ID!, followedId: ID!): User
