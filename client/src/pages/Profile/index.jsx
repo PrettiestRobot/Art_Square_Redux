@@ -1,9 +1,11 @@
 import "./Profile.css";
 import PostList from "../../components/PostList";
 import ProfileBanner from "../../components/ProfileBanner";
+import PostForm from "../../components/PostForm";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER_BY_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 import ProfileImage from "../../assets/images/profile.jpg";
 
@@ -18,7 +20,7 @@ const Profile = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   const user = data?.userById || {};
-  const userPosts = user.posts || [];
+  const userPosts = user?.posts || [];
 
   //calculate a users overal rating
   const totalRating = user.posts.reduce(
@@ -26,8 +28,7 @@ const Profile = () => {
     0
   );
   const averageRating = totalRating / user.posts.length;
-
-  console.log(averageRating);
+  const currentUser = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
 
   //adjust posts to fit the predefined props of PostList
   const posts = userPosts.map((post) => ({
@@ -47,6 +48,11 @@ const Profile = () => {
         <div className="layout-container">
           <ProfileBanner user={user} userRating={averageRating} />
         </div>
+        {currentUser && currentUser === userId ? (
+          <div>
+            <PostForm userId={userId} />
+          </div>
+        ) : null}
         <div className="layout-container">
           {loading ? (
             <div>Loading...</div>

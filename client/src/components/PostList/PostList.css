@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 72px 24px 24px 24px;
+  padding: 2rem;
   z-index: 0;
 }
 .gallery .gallery-grid {

@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS } from "../../utils/queries";
+import { QUERY_POSTS, QUERY_USER_BY_ID } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 import "./PostForm.css";
 
-const PostForm = () => {
+const PostForm = ({ userId }) => {
   const [formState, setFormState] = useState({
     postName: "",
     imageUrl: "",
@@ -29,7 +29,11 @@ const PostForm = () => {
   };
 
   const [addPost, { error }] = useMutation(ADD_POST, {
-    refetchQueries: [QUERY_POSTS, "getPosts"],
+    refetchQueries: [
+      // QUERY_POSTS,
+      // "getPosts",
+      { query: QUERY_USER_BY_ID, variables: { id: userId } },
+    ],
   });
 
   const handleFormSubmit = async (e) => {

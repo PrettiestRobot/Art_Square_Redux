@@ -13,14 +13,7 @@ const Home = () => {
     <main>
       <div className="">
         <div className="layout-container">
-          <PostForm />
-        </div>
-        <div className="layout-container">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList posts={posts} title="Some Feed for Post(s)..." />
-          )}
+          {loading ? <div>Loading...</div> : <PostList posts={posts} />}
         </div>
       </div>
     </main>

@@ -6,6 +6,7 @@
   width: 100%;
   background-color: hsl(0, 0%, 15%);
   padding: 1rem;
+  margin-top: 2rem;
 }
 .form-post-container .count-validation {
   color: hsl(0, 0%, 95%);

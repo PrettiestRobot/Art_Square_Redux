@@ -2,6 +2,7 @@ import "./ProfileBanner.css";
 import { useState } from "react";
 import profileImage from "../../assets/images/profile.jpg";
 import editButton from "../../assets/images/edit-button.svg";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_FOLLOW, UPDATE_PROFILE_PICTURE } from "../../utils/mutations";
 import { IS_USER_FOLLOWED } from "../../utils/queries";

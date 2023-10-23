@@ -5,14 +5,13 @@
   width: 100%;
   @include center-flexbox(row);
   border-bottom: 1px solid $secondary-bg;
-  padding-top: 56px;
 }
 
 .profile-container {
   display: flex;
   display: relative;
   margin: 0;
-  padding: 24px 0 24px 0;
+  padding: 2rem 0 2rem 0;
   max-width: 1090px;
   width: 812px;
   color: white;
