@@ -1,33 +1,57 @@
-.form-post-container {
+.form-post-modal {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-color: rgba(26, 26, 26, 0.75);
+}
+.form-post-modal .form-post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-width: 844px;
   width: 100%;
   background-color: hsl(0, 0%, 15%);
   padding: 1rem;
-  margin-top: 2rem;
 }
-.form-post-container .count-validation {
+.form-post-modal .form-post-container .count-validation {
   color: hsl(0, 0%, 95%);
 }
-.form-post-container .form-add-post {
+.form-post-modal .form-post-container .form-add-post {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
-  max-width: 828px;
 }
-.form-post-container .form-add-post button {
+.form-post-modal .form-post-container .form-add-post button {
   width: 100%;
 }
-.form-post-container .post-form-login {
+.form-post-modal .form-post-container .post-form-login {
   color: hsl(0, 0%, 95%);
 }
 
 .hidden {
   display: none;
+}
+
+.modal-active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .post-form-input {
@@ -43,4 +67,16 @@
 .post-form-input:focus {
   outline: none;
   border-color: hsl(0, 0%, 75%);
+}
+
+.primary-post-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+.primary-post-btn-container .primary-post-btn {
+  width: 100%;
 }/*# sourceMappingURL=PostForm.css.map */

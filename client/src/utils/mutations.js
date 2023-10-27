@@ -118,7 +118,7 @@ export const ADD_FOLLOW = gql`
 
 export const REMOVE_FOLLOW = gql`
   mutation RemoveFollow($userId: ID!, $followedId: ID!) {
-    removeFollowed(userId: $userId, followedId: $followedId) {
+    removeFollow(userId: $userId, followedId: $followedId) {
       _id
       followed {
         _id

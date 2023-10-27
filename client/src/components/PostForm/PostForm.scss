@@ -1,30 +1,50 @@
 @import "../../assets/styles/Variables";
 @import "../../assets/styles/Mixins";
 
-.form-post-container {
+.form-post-modal {
   @include center-flexbox(column);
+  display: flex;
+  position: fixed;
   width: 100%;
-  background-color: $secondary-bg;
-  padding: 1rem;
-  margin-top: 2rem;
-  .count-validation {
-    color: $primary-text;
-  }
-  .form-add-post {
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-color: rgba(26, 26, 26, 0.75);
+  .form-post-container {
     @include center-flexbox(column);
-    gap: 0.625rem;
-    max-width: 828px;
-    button {
-      width: 100%;
+    width: fit-content;
+    height: fit-content;
+    max-width: 844px;
+    width: 100%;
+    background-color: $secondary-bg;
+    padding: 1rem;
+    .count-validation {
+      color: $primary-text;
     }
-  }
-  .post-form-login {
-    color: $primary-text;
+    .form-add-post {
+      @include center-flexbox(column);
+      gap: 0.625rem;
+
+      button {
+        width: 100%;
+      }
+    }
+    .post-form-login {
+      color: $primary-text;
+    }
   }
 }
 
 .hidden {
   display: none;
+}
+
+.modal-active {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .post-form-input {
@@ -40,4 +60,13 @@
 .post-form-input:focus {
   outline: none;
   border-color: $secondary-text;
+}
+
+.primary-post-btn-container {
+  @include center-flexbox(row);
+  margin-top: 2rem;
+  padding: 0 1rem;
+  .primary-post-btn {
+    width: 100%;
+  }
 }
