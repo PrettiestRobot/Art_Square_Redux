@@ -17,6 +17,9 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
-    "react-transition-group": "^4.4.5"
+    "cloudinary": "^1.41.0",
+    "firebase": "^10.5.2",
+    "react-transition-group": "^4.4.5",
+    "uuid": "^9.0.1"
   }
 }

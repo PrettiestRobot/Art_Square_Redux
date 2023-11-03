@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-
+import { storage } from "../../utils/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS, QUERY_USER_BY_ID } from "../../utils/queries";
+import { QUERY_USER_BY_ID } from "../../utils/queries";
+import { v4 } from "uuid";
 
 import Auth from "../../utils/auth";
 import "./PostForm.css";
@@ -13,6 +15,24 @@ const PostForm = ({ userId }) => {
     postName: "",
     imageUrl: "",
   });
+
+  //file state for firebase
+  const [selectedFile, setSelectedFile] = useState(null);
+  //firebase upload logic
+  const uploadImage = async (file) => {
+    try {
+      const storageRef = ref(
+        storage,
+        `images/${userId}/${new Date().toISOString()}_${v4()}`
+      );
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+      return url;
+    } catch (err) {
+      console.error("Error uploading image:", err);
+      throw err;
+    }
+  };
 
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -28,6 +48,10 @@ const PostForm = ({ userId }) => {
     }
   };
 
+  const handleSelectFile = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   const [addPost, { error }] = useMutation(ADD_POST, {
     refetchQueries: [{ query: QUERY_USER_BY_ID, variables: { id: userId } }],
   });
@@ -36,10 +60,12 @@ const PostForm = ({ userId }) => {
     e.preventDefault();
 
     try {
+      const imageUrl = await uploadImage(selectedFile);
+
       const response = await addPost({
         variables: {
           postName: formState.postName,
-          imageUrl: formState.imageUrl,
+          imageUrl: imageUrl,
           userId: Auth.getProfile().data._id,
         },
       });
@@ -98,12 +124,17 @@ const PostForm = ({ userId }) => {
                   style={{ lineHeight: "1.5", resize: "vertical" }}
                   onChange={handleChange}
                 ></textarea>
-                <input
+                {/* <input
                   name="imageUrl"
                   placeholder="imageUrl..."
                   value={formState.imageUrl}
                   className="post-form-input"
                   onChange={handleChange}
+                ></input> */}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleSelectFile}
                 ></input>
 
                 <button className="btn post-btn" type="submit">

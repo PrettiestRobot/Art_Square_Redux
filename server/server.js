@@ -3,6 +3,7 @@ const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
+const cloudinary = require("cloudinary").v2;
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
@@ -18,6 +19,13 @@ const server = new ApolloServer({
     const user = profile.data;
     return { user };
   },
+});
+
+//Cloudianry config
+cloudinary.config({
+  cloud_name: "prettiestrobot",
+  api_key: "331493286331956",
+  api_secret: "kX9gqBKtnvP-7aGj0qi83oHHqH8",
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
