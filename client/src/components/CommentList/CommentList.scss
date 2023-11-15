@@ -1,29 +1,31 @@
 @import "../../assets/styles/Variables";
 @import "../../assets/styles/Mixins";
 
-.comment-list-header {
-  background-color: $secondary-bg;
-  color: $primary-text;
+.comment-list-container {
+  display: flex;
   width: 100%;
-  margin: 0;
-  padding: 1.5rem 1rem;
+  flex-grow: 1;
+  max-height: 626px;
 }
 
-.comment-list-container {
-  width: 100%;
+.comment-list {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
   gap: 1rem;
   padding: 1rem 2rem;
+  max-width: 536px;
 }
-
 .comment-container {
   display: flex;
+  flex-direction: row;
   width: 100%;
-  color: $primary-text;
+  max-width: 536px;
+  color: $text-dark;
+
   .comment-profile-image {
-    @include center-flexbox(row);
-    height: 2rem;
+    height: 24px;
     aspect-ratio: 1/1;
     border-radius: 50%;
     margin-right: 8px;
@@ -35,21 +37,26 @@
     }
   }
   .comment-content {
-    background-color: $secondary-bg;
+    background-color: $bg-light;
     padding: 0.875rem 1rem;
-    border-radius: 24px;
+    border-radius: 50px;
+    padding: 8px 24px;
     h5 {
       margin: 0 0 0.25rem 0;
-      font-size: 0.875rem;
+      font-size: 0.813rem;
       .comment-date {
         font-weight: 400;
-        font-size: 0.875rem;
+        font-size: 0.813rem;
         color: $secondary-text;
+        margin-left: 8px;
       }
     }
     p {
-      font-size: 1rem;
+      font-size: 0.938rem;
       margin: 0;
+      word-wrap: break-word;
+      max-width: calc(45ch);
+      line-height: 1.35rem;
     }
   }
 }

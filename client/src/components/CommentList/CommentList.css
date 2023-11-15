@@ -1,30 +1,29 @@
-.comment-list-header {
-  background-color: hsl(0, 0%, 15%);
-  color: hsl(0, 0%, 95%);
+.comment-list-container {
+  display: flex;
   width: 100%;
-  margin: 0;
-  padding: 1.5rem 1rem;
+  flex-grow: 1;
+  max-height: 626px;
 }
 
-.comment-list-container {
-  width: 100%;
+.comment-list {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
   gap: 1rem;
   padding: 1rem 2rem;
+  max-width: 536px;
 }
 
 .comment-container {
   display: flex;
+  flex-direction: row;
   width: 100%;
-  color: hsl(0, 0%, 95%);
+  max-width: 536px;
+  color: hsl(228, 45%, 10%);
 }
 .comment-container .comment-profile-image {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 2rem;
+  height: 24px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   margin-right: 8px;
@@ -34,23 +33,28 @@
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .comment-container .comment-content {
-  background-color: hsl(0, 0%, 15%);
+  background-color: hsl(50, 46%, 95%);
   padding: 0.875rem 1rem;
-  border-radius: 24px;
+  border-radius: 50px;
+  padding: 8px 24px;
 }
 .comment-container .comment-content h5 {
   margin: 0 0 0.25rem 0;
-  font-size: 0.875rem;
+  font-size: 0.813rem;
 }
 .comment-container .comment-content h5 .comment-date {
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 0.813rem;
   color: hsl(0, 0%, 75%);
+  margin-left: 8px;
 }
 .comment-container .comment-content p {
-  font-size: 1rem;
+  font-size: 0.938rem;
   margin: 0;
-}/*# sourceMappingURL=CommentList.css.map */
+  word-wrap: break-word;
+  max-width: 45ch;
+  line-height: 1.35rem;
+} /*# sourceMappingURL=CommentList.css.map */

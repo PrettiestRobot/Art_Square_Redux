@@ -45,7 +45,7 @@ const postSchema = new Schema({
         type: String,
         required: true,
         minlength: 1,
-        maxlength: 60,
+        maxlength: 600,
       },
       commentAuthor: {
         type: Schema.Types.ObjectId,
@@ -62,6 +62,11 @@ const postSchema = new Schema({
         required: true,
         trim: true,
       },
+    },
+  ],
+  tags: [
+    {
+      type: String,
     },
   ],
 });

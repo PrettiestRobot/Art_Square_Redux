@@ -6,13 +6,13 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 56px;
+  height: 48px;
   z-index: 9;
-  background-color: hsl(0, 0%, 15%);
+  background-color: hsl(228, 45%, 25%);
 }
 nav .nav-contents {
-  color: hsl(0, 0%, 95%);
-  padding: 8px 24px;
+  color: hsl(50, 46%, 95%);
+  height: 100%;
   width: 100%;
   max-width: 1920px;
   display: flex;
@@ -23,8 +23,10 @@ nav .nav-contents {
 nav .nav-contents .nav-right {
   display: flex;
   gap: 16px;
+  height: 100%;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 24px;
 }
 nav .nav-contents .nav-right .nav-profile-picture {
   height: 2rem;
@@ -39,11 +41,26 @@ nav .nav-contents .nav-right .nav-profile-picture img {
   -o-object-fit: cover;
      object-fit: cover;
 }
+nav .nav-contents .nav-right .nav-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 90%, 70%);
+  border: none;
+  color: hsl(50, 46%, 95%);
+  height: 100%;
+  padding: 0 16px;
+  font-size: 1rem;
+  font-weight: 600;
+}
 nav .nav-contents .nav-left {
   display: flex;
   gap: 16px;
+  height: 100%;
   justify-content: flex-start;
   align-items: center;
+  padding-left: 24px;
 }
 
 .nav-brand {

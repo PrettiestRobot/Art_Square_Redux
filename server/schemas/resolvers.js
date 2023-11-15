@@ -105,6 +105,13 @@ const resolvers = {
         }
       );
     },
+    addTagToPost: async (_, { postId, tag }) => {
+      return Post.findByIdAndUpdate(
+        postId,
+        { $addToSet: { tags: tag } },
+        { new: true }
+      );
+    },
     removeFollow: async (parent, { userId, followedId }) => {
       const user = await User.findById(userId);
       const index = user.followed.indexOf(followedId);

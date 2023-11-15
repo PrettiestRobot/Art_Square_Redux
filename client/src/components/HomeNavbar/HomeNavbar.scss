@@ -1,0 +1,59 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.home-nav {
+  @include center-flexbox(row);
+  width: 100%;
+  height: 48px;
+  z-index: 9;
+  .home-nav-contents {
+    color: $text-light;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+    @include spread-flexbox();
+
+    .nav-right {
+      display: flex;
+      gap: 16px;
+      height: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 24px;
+      .nav-profile-picture {
+        height: 2rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        margin-right: 8px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      button {
+        background-color: $btn-primary;
+        border: none;
+        color: $text-light;
+        height: 100%;
+        padding: 0 16px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 16px;
+      height: 100%;
+      justify-content: flex-start;
+      align-items: center;
+      padding-left: 24px;
+    }
+  }
+}
+
+.nav-brand {
+  height: 25px;
+}

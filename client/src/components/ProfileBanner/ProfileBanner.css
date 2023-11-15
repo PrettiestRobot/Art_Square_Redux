@@ -4,18 +4,23 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid hsl(0, 0%, 15%);
 }
 
 .profile-container {
   display: flex;
-  display: relative;
+  position: relative;
   margin: 0;
-  padding: 2rem 0 2rem 0;
   max-width: 1090px;
   width: 812px;
-  color: white;
   line-height: 1.25rem;
+  background-color: hsl(201, 55%, 78%);
+}
+.profile-container .text-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: hsl(228, 45%, 10%);
 }
 .profile-container .break1 {
   display: none;
@@ -52,18 +57,10 @@
   .profile-container .banner-username {
     margin-bottom: 8px;
   }
-  .profile-container .follow {
-    display: none;
-  }
-  .profile-container .mobile-follow {
-    display: block;
-    font-weight: 700;
-  }
 }
 .profile-container .profile-banner-image {
-  width: 122px;
-  height: 122px;
-  border-radius: 50%;
+  width: 120px;
+  aspect-ratio: 1/1;
   margin-right: 16px;
   overflow: hidden;
 }
@@ -73,28 +70,18 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
-.profile-container .text-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .banner-username {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: hsl(228, 45%, 10%);
   margin-bottom: 16px;
 }
 
 .mobile-follow {
   display: none;
-}
-
-.follow-btn {
-  height: 38px;
 }
 
 .username {
@@ -110,7 +97,8 @@
 }
 
 .general-info {
-  color: white;
+  color: hsl(228, 45%, 10%);
+  padding-bottom: 1rem;
 }
 
 .profile-image-container {
@@ -121,22 +109,49 @@
   width: 28px;
   height: 28px;
   aspect-ratio: 1/1;
-  bottom: 16px;
-  right: 16px;
+  top: 8px;
+  right: 24px;
   border-radius: 50%;
-  background-color: hsl(0, 0%, 95%);
+  background-color: none;
+  border: none;
+  opacity: 0.5;
+  transition: 0.3s ease-in-out;
+}
+.profile-image-container .edit-profile-image-button:hover {
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.3s ease-in-out;
 }
 .profile-image-container .edit-profile-image-button img {
-  max-width: 100%;
-  max-height: 100%;
-  -o-object-fit: fill;
-     object-fit: fill;
+  max-width: 65%;
+  max-height: 65%;
+  -o-object-fit: center;
+     object-fit: center;
+}
+
+.profile-image-form-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 99;
+  pointer-events: none;
+  background-color: rgba(26, 26, 26, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
 }
 
 .profile-image-form-container {
   display: flex;
   position: absolute;
-  opacity: 0;
   pointer-events: none;
 }
 .profile-image-form-container form {
@@ -159,9 +174,48 @@
 }
 .profile-image-form-container form button {
   width: 100%;
+  font-weight: 600;
 }
 
 .modal-active {
   opacity: 1;
   pointer-events: all;
+}
+
+.profile-button-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: hsl(50, 46%, 95%);
+}
+.profile-button-container .follow-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  color: hsl(50, 46%, 95%);
+}
+.profile-button-container .follow-button .follow-right {
+  height: 34px;
+  aspect-ratio: 1/1;
+  background-color: hsl(0, 90%, 70%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+.profile-button-container .follow-button .follow-left {
+  padding: 0 16px 0 16px;
+  height: 34px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 88%, 75%);
+  font-weight: 600;
+  background-color: hsl(0, 88%, 75%);
 }/*# sourceMappingURL=ProfileBanner.css.map */

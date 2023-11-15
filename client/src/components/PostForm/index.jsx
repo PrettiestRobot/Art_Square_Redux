@@ -97,7 +97,7 @@ const PostForm = ({ userId }) => {
   return (
     <div className="form-post-component">
       <div className="primary-post-btn-container">
-        <button className="btn post-btn primary-post-btn" onClick={toggleModal}>
+        <button className="post-btn primary-post-btn" onClick={toggleModal}>
           Add New Post
         </button>
       </div>
@@ -124,13 +124,6 @@ const PostForm = ({ userId }) => {
                   style={{ lineHeight: "1.5", resize: "vertical" }}
                   onChange={handleChange}
                 ></textarea>
-                {/* <input
-                  name="imageUrl"
-                  placeholder="imageUrl..."
-                  value={formState.imageUrl}
-                  className="post-form-input"
-                  onChange={handleChange}
-                ></input> */}
                 <input
                   type="file"
                   accept="image/*"

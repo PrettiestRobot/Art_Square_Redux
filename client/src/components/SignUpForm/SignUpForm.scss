@@ -1,0 +1,21 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+form {
+  @include center-flexbox(column);
+  min-width: 450px;
+  gap: 24px;
+  .form-input {
+    width: 100%;
+    padding: 24px 40px;
+    border-radius: 50px;
+    border: none;
+    background-color: $bg-light;
+  }
+  button {
+    width: 100%;
+    height: 75px;
+    border: none;
+    background-color: $bg-alt;
+  }
+}

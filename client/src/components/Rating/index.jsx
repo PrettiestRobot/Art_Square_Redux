@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_RATING } from "../../utils/mutations.js";
 import { QUERY_POSTS, QUERY_SINGLE_POST } from "../../utils/queries.js";
+import Heart from "../../assets/images/heart-rating.svg";
 import "./Rating.css";
 import Auth from "../../utils/auth";
 
@@ -62,7 +63,9 @@ const Rating = ({ postId }) => {
           onMouseLeave={onMouseLeave}
           onClick={() => onClick(index)}
         >
-          {index}
+          <div className="rating-selector">
+            <img src={Heart} />
+          </div>
         </div>
       ))}
     </div>

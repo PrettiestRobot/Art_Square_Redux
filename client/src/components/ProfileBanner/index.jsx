@@ -60,10 +60,40 @@ const ProfileBanner = ({ user, userRating }) => {
     setIsModalActive(!isModalActive);
   };
 
+  const closeModal = (event) => {
+    if (event.target === event.currentTarget) {
+      setIsModalActive(false);
+    }
+  };
+
   return (
     <>
       <div className="profile-banner">
         <div className="profile-container">
+          <div className="profile-button-container">
+            {userId && userId !== user._id ? (
+              <div>
+                {followData?.isUserFollowed ? (
+                  <button
+                    className="follow-button"
+                    onClick={() => handleRemoveFollow(user._id)}
+                  >
+                    <div className="follow-left">Unfollow</div>
+                    <div className="follow-right">-</div>
+                  </button>
+                ) : (
+                  <button
+                    className="follow-button"
+                    onClick={() => handleAddFollow(user._id)}
+                  >
+                    <div className="follow-left">Follow</div>
+                    <div className="follow-right">+</div>
+                  </button>
+                )}
+              </div>
+            ) : null}
+          </div>
+
           <div className="profile-image-container">
             {userId && userId === user._id ? (
               <button
@@ -81,25 +111,6 @@ const ProfileBanner = ({ user, userRating }) => {
           <div className="text-info">
             <div className="banner-username">
               <div className="username">{user.username}</div>
-              {userId && userId !== user._id ? (
-                <div>
-                  {followData?.isUserFollowed ? (
-                    <button
-                      className="follow-button"
-                      onClick={() => handleRemoveFollow(user._id)}
-                    >
-                      -
-                    </button>
-                  ) : (
-                    <button
-                      className="follow-button"
-                      onClick={() => handleAddFollow(user._id)}
-                    >
-                      +
-                    </button>
-                  )}
-                </div>
-              ) : null}
             </div>
             <div className="banner-account-info">
               <p className="general-info">
@@ -116,19 +127,22 @@ const ProfileBanner = ({ user, userRating }) => {
         </div>
 
         <div
-          className={`profile-image-form-container ${
+          className={`profile-image-form-modal ${
             isModalActive ? "modal-active" : ""
           }`}
+          onClick={closeModal}
         >
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="New Profile Picture URL"
-              value={profilePicture}
-              onChange={(e) => setProfilePicture(e.target.value)}
-            />
-            <button type="submit">Update Profile Picture</button>
-          </form>
+          <div className="profile-image-form-container">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="New Profile Picture URL"
+                value={profilePicture}
+                onChange={(e) => setProfilePicture(e.target.value)}
+              />
+              <button type="submit">Update Profile Picture</button>
+            </form>
+          </div>
         </div>
       </div>
     </>

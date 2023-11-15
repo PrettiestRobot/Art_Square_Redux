@@ -1,0 +1,61 @@
+.home-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  z-index: 9;
+}
+.home-nav .home-nav-contents {
+  color: hsl(50, 46%, 95%);
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-nav .home-nav-contents .nav-right {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 24px;
+}
+.home-nav .home-nav-contents .nav-right .nav-profile-picture {
+  height: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-right: 8px;
+  overflow: hidden;
+}
+.home-nav .home-nav-contents .nav-right .nav-profile-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home-nav .home-nav-contents .nav-right button {
+  background-color: hsl(0, 90%, 70%);
+  border: none;
+  color: hsl(50, 46%, 95%);
+  height: 100%;
+  padding: 0 16px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.home-nav .home-nav-contents .nav-left {
+  display: flex;
+  gap: 16px;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 24px;
+}
+
+.nav-brand {
+  height: 25px;
+}/*# sourceMappingURL=HomeNavbar.css.map */

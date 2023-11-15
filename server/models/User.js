@@ -21,7 +21,8 @@ const userSchema = new Schema({
   },
   profilePicture: {
     type: String,
-    default: "../../assets/images/profile.jpg",
+    default:
+      "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2Fprofile.jpg?alt=media&token=983f34ec-686d-4e5e-b9b5-7f4b6d02b0f6",
   },
   posts: [
     {

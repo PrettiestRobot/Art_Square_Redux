@@ -2,6 +2,7 @@ import "./Profile.css";
 import PostList from "../../components/PostList";
 import ProfileBanner from "../../components/ProfileBanner";
 import PostForm from "../../components/PostForm";
+
 import { useQuery } from "@apollo/client";
 import { QUERY_USER_BY_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
@@ -49,7 +50,7 @@ const Profile = () => {
           <ProfileBanner user={user} userRating={averageRating} />
         </div>
         {currentUser && currentUser === userId ? (
-          <div>
+          <div className="layout-container">
             <PostForm userId={userId} />
           </div>
         ) : null}

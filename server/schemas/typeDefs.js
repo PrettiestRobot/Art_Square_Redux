@@ -18,6 +18,7 @@ const typeDefs = `
     ratings: [Rating]!
     comments: [Comment]!
     averageRating: Float
+    tags: [String]
   }
 
   type Comment {
@@ -61,6 +62,7 @@ const typeDefs = `
       commentAuthor: ID!
       username: String!
     ): Post
+    addTagToPost(postId: ID!, tag: String!): Post
       updateUsername(userId: ID!, newUsername: String!): User
   updateProfilePicture(userId: ID!, newProfilePicture: String!): User
     removePost(postId: ID!): Post
