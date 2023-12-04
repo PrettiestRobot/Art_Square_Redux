@@ -46,13 +46,16 @@ nav .nav-contents .nav-right .nav-btn {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: hsl(0, 90%, 70%);
   border: none;
   color: hsl(50, 46%, 95%);
   height: 100%;
   padding: 0 16px;
   font-size: 1rem;
   font-weight: 600;
+  background-color: hsl(0, 90%, 70%);
+}
+nav .nav-contents .nav-right .nav-btn.login-nav {
+  background-color: transparent;
 }
 nav .nav-contents .nav-left {
   display: flex;

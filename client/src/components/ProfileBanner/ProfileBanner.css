@@ -85,7 +85,7 @@
 }
 
 .username {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
 }
@@ -142,7 +142,6 @@
   left: 0;
   opacity: 0;
   z-index: 99;
-  pointer-events: none;
   background-color: rgba(26, 26, 26, 0.75);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -152,7 +151,6 @@
 .profile-image-form-container {
   display: flex;
   position: absolute;
-  pointer-events: none;
 }
 .profile-image-form-container form {
   display: flex;
@@ -175,6 +173,10 @@
 .profile-image-form-container form button {
   width: 100%;
   font-weight: 600;
+}
+
+.profile-image-form-modal {
+  pointer-events: none;
 }
 
 .modal-active {
@@ -218,4 +220,12 @@
   background-color: hsl(0, 88%, 75%);
   font-weight: 600;
   background-color: hsl(0, 88%, 75%);
+}
+
+.banner-account-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }/*# sourceMappingURL=ProfileBanner.css.map */

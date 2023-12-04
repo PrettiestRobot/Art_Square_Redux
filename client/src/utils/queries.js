@@ -88,3 +88,16 @@ export const IS_USER_FOLLOWED = gql`
     isUserFollowed(userId: $userId, followedId: $followedId)
   }
 `;
+
+export const QUERY_FOLLOWED_USERS = gql`
+  query GetFollowedUsers($ids: [ID!]!) {
+    followedUsers(ids: $ids) {
+      _id
+      username
+      profilePicture
+      posts {
+        averageRating
+      }
+    }
+  }
+`;

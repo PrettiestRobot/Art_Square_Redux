@@ -9,19 +9,27 @@
   height: 100%;
   top: 0;
   left: 0;
-  opacity: 1;
+  opacity: 0;
   z-index: 99;
-  pointer-events: none;
+  pointer-events: all;
   background-color: rgba(35, 47, 92, 0.25);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+.sp-modal.sp-modal-visible {
+  opacity: 1;
 }
 .sp-modal .sp-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transform: translateY(100%);
+}
+.sp-modal .sp-container.sp-modal-visible {
+  transform: translateY(0);
+  transition: 0.5s ease-in-out;
 }
 .sp-modal .sp-container .sp-image-container {
   position: relative;
@@ -35,25 +43,15 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
-.sp-modal .sp-container .sp-image-container .tag-form-container {
-  width: 100%;
-  background-color: rgba(26, 26, 26, 0.75);
-}
-.sp-modal .sp-container .sp-image-container .tag-form-container .tags-container {
-  width: 100%;
-}
-.sp-modal .sp-container .sp-image-container .tag-form-container .form-tags {
-  width: 100%;
-}
 .sp-modal .sp-container .sp-container-column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 536px;
   height: 100%;
   max-height: 796px;
-  overflow: hidden;
+  flex-grow: 0;
 }
 .sp-modal .sp-container .sp-container-column .sp-header {
   display: flex;
@@ -62,6 +60,7 @@
   align-items: center;
   height: 40px;
   width: 100%;
+  flex-shrink: 0;
   background-color: hsl(0, 90%, 70%);
   color: hsl(50, 46%, 95%);
   box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
@@ -117,4 +116,50 @@
   color: hsl(50, 46%, 95%);
   font-size: 16px;
   font-weight: 600;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+.tag-form-container {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: hsl(228, 45%, 25%);
+}
+.tag-form-container .tags-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+  padding: 8px;
+}
+.tag-form-container .tags-container .tag {
+  padding: 4px;
+  background-color: hsl(50, 46%, 95%);
+  color: hsl(228, 45%, 10%);
+  border: none;
+  font-size: 14px;
+}
+.tag-form-container .form-tags {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+}
+.tag-form-container .form-tags input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: none;
+}
+.tag-form-container .form-tags button {
+  height: 100%;
+  width: 20%;
 }/*# sourceMappingURL=SinglePost.css.map */

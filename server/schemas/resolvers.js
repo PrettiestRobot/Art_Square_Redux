@@ -25,6 +25,9 @@ const resolvers = {
       const user = await User.findById(userId);
       return user.followed.includes(followedId);
     },
+    followedUsers: async (_, { ids }) => {
+      return await User.find({ _id: { $in: ids } }).populate(["posts"]);
+    },
   },
 
   Mutation: {

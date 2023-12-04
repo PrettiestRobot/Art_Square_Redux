@@ -73,23 +73,23 @@ main {
   cursor: pointer;
 }
 
-.form-slider {
+.form-slider-container {
+  overflow: hidden;
+  position: relative;
+}
+.form-slider-container .form-slider {
   display: flex;
   flex-direction: row;
-  position: relative;
   justify-content: center;
-  align-items: start;
-  overflow: hidden;
+  align-items: center;
+  align-items: flex-start;
   transition: 0.5s;
   transition-timing-function: ease-out;
+  gap: 16px;
 }
-.form-slider.login {
-  justify-content: right;
-  transition: 0.5s;
-  transition-timing-function: ease-out;
+.form-slider-container .form-slider.login {
+  transform: translateX(calc(-50% - 8px));
 }
-.form-slider.signup {
-  justify-content: left;
-  transition: 0.5s;
-  transition-timing-function: ease-out;
+.form-slider-container .form-slider.signup {
+  transform: translateX(calc(50% + 8px));
 }/*# sourceMappingURL=Home.css.map */

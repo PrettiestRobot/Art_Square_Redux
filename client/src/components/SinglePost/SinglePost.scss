@@ -9,14 +9,23 @@
   height: 100%;
   top: 0;
   left: 0;
-  opacity: 1;
-  z-index: 10;
-  pointer-events: none;
+  opacity: 0;
+  z-index: 99;
+  pointer-events: all;
   background-color: rgba(35, 47, 92, 0.25);
   backdrop-filter: blur(10px);
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
+  &.sp-modal-visible {
+    opacity: 1;
+  }
+
   .sp-container {
     @include center-flexbox(row);
+    transform: translateY(100%);
+    &.sp-modal-visible {
+      transform: translateY(0);
+      transition: 0.5s ease-in-out;
+    }
     .sp-image-container {
       position: relative;
       height: 796px;
@@ -27,27 +36,18 @@
         height: 100%;
         object-fit: cover;
       }
-      .tag-form-container {
-        width: 100%;
-        background-color: rgba(26, 26, 26, 0.75);
-        .tags-container {
-          width: 100%;
-        }
-        .form-tags {
-          width: 100%;
-        }
-      }
     }
     .sp-container-column {
-      @include spread-flexbox(column);
+      @include center-flexbox(column);
       width: 536px;
       height: 100%;
       max-height: 796px;
-      overflow: hidden;
+      flex-grow: 0;
       .sp-header {
         @include spread-flexbox(row);
         height: 40px;
         width: 100%;
+        flex-shrink: 0;
         background-color: $btn-primary;
         color: $text-light;
         box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
@@ -102,4 +102,45 @@
 
 body {
   overscroll-behavior: none;
+}
+
+.tag-form-container {
+  // position: absolute;
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $bg-dark;
+  .tags-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 8px;
+    padding: 8px;
+    .tag {
+      padding: 4px;
+      background-color: $bg-light;
+      color: $text-dark;
+      border: none;
+      font-size: 14px;
+    }
+  }
+  .form-tags {
+    height: 24px;
+    @include center-flexbox(row);
+    width: 100%;
+    gap: 0;
+    input {
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: none;
+    }
+    button {
+      height: 100%;
+      width: 20%;
+    }
+  }
 }

@@ -40,7 +40,7 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <div className="form-component">
       {data ? (
         <p>
           Success! You may now head <Link to="/">back to the homepage.</Link>
@@ -84,7 +84,7 @@ const Signup = () => {
       {error && (
         <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,17 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.section-tag-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  border-top: 1px solid $btn-primary;
+  .section-tag {
+    display: flex;
+    background-color: $btn-primary;
+    color: white;
+    // font-weight: 600;
+    padding: 0.5rem;
+    font-size: 12px;
+  }
+}

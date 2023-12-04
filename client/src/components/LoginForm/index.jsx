@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className="for-component">
       {data ? (
         <p>
           Success! You may now head <Link to="/">back to the homepage.</Link>
@@ -78,7 +78,7 @@ const Login = () => {
       {error && (
         <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
       )}
-    </>
+    </div>
   );
 };
 

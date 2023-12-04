@@ -63,23 +63,20 @@ main {
   }
 }
 
-.form-slider {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  justify-content: center;
-  align-items: start;
+.form-slider-container {
   overflow: hidden;
-  transition: 0.5s;
-  transition-timing-function: ease-out;
-  &.login {
-    justify-content: right;
+  position: relative;
+  .form-slider {
+    @include center-flexbox(row);
+    align-items: flex-start;
     transition: 0.5s;
     transition-timing-function: ease-out;
-  }
-  &.signup {
-    justify-content: left;
-    transition: 0.5s;
-    transition-timing-function: ease-out;
+    gap: 16px;
+    &.login {
+      transform: translateX(calc(-50% + -8px));
+    }
+    &.signup {
+      transform: translateX(calc(50% + 8px));
+    }
   }
 }

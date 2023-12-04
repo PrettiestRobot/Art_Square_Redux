@@ -1,7 +1,17 @@
 @import "../../assets/styles/Variables";
 @import "../../assets/styles/Mixins";
 
+.profile-page {
+  @include center-flexbox(column);
+  gap: 1rem;
+}
+
 .layout-container {
   @include center-flexbox(row);
+  padding: 0 2rem;
   width: 100%;
+}
+
+.sp-modal-active {
+  pointer-events: none;
 }

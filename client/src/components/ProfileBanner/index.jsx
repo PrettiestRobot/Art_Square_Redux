@@ -9,9 +9,30 @@ import {
 } from "../../utils/mutations";
 import { IS_USER_FOLLOWED } from "../../utils/queries";
 import Auth from "../../utils/auth";
+import { storage } from "../../utils/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 
 const ProfileBanner = ({ user, userRating }) => {
   const userId = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
+
+  //file state for firebase
+  const [selectedFile, setSelectedFile] = useState(null);
+  //firebase upload logic
+  const uploadImage = async (file) => {
+    try {
+      const storageRef = ref(
+        storage,
+        `images/${userId}/profile_pictures/${new Date().toISOString()}_${v4()}`
+      );
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+      return url;
+    } catch (err) {
+      console.error("Error uploading image:", err);
+      throw err;
+    }
+  };
 
   const [addFollow] = useMutation(ADD_FOLLOW, {
     refetchQueries: [IS_USER_FOLLOWED],
@@ -30,28 +51,30 @@ const ProfileBanner = ({ user, userRating }) => {
   const handleRemoveFollow = (followedId) => {
     removeFollow({ variables: { userId, followedId } });
   };
-
-  const [profilePicture, setProfilePicture] = useState("");
   const [updateProfilePicture] = useMutation(UPDATE_PROFILE_PICTURE);
+
+  const handleSelectFile = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      const imageUrl = await uploadImage(selectedFile);
+
       const { data } = await updateProfilePicture({
         variables: {
           userId: user._id,
-          newProfilePicture: profilePicture,
+          newProfilePicture: imageUrl,
         },
       });
-
+      setIsModalActive(false);
       console.log("Updated User:", data.updateProfilePicture);
     } catch (error) {
       console.error("Error updating profile picture:", error);
     }
   };
-
-  console.log(user);
 
   const [isModalActive, setIsModalActive] = useState(false);
 
@@ -61,6 +84,7 @@ const ProfileBanner = ({ user, userRating }) => {
   };
 
   const closeModal = (event) => {
+    event.stopPropagation();
     if (event.target === event.currentTarget) {
       setIsModalActive(false);
     }
@@ -112,7 +136,7 @@ const ProfileBanner = ({ user, userRating }) => {
             <div className="banner-username">
               <div className="username">{user.username}</div>
             </div>
-            <div className="banner-account-info">
+            {/* <div className="banner-account-info">
               <p className="general-info">
                 Following {user.followed.length} blockheads
                 <span className="pipe1"> | </span>
@@ -122,6 +146,15 @@ const ProfileBanner = ({ user, userRating }) => {
                 <br className="break2"></br>
                 {Math.round(userRating)} / 5 Square Rating
               </p>
+            </div> */}
+            <div className="banner-account-info">
+              <p>
+                Following <span>{user.followed.length}</span> blockheads
+              </p>
+              <p>
+                <span>{user.posts.length}</span> squares shared
+              </p>
+              <p>{Math.round(userRating)} / 5 Square Rating</p>
             </div>
           </div>
         </div>
@@ -135,11 +168,10 @@ const ProfileBanner = ({ user, userRating }) => {
           <div className="profile-image-form-container">
             <form onSubmit={handleSubmit}>
               <input
-                type="text"
-                placeholder="New Profile Picture URL"
-                value={profilePicture}
-                onChange={(e) => setProfilePicture(e.target.value)}
-              />
+                type="file"
+                accept="image/*"
+                onChange={handleSelectFile}
+              ></input>
               <button type="submit">Update Profile Picture</button>
             </form>
           </div>

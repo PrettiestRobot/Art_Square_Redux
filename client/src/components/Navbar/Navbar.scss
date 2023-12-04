@@ -38,13 +38,17 @@ nav {
       }
       .nav-btn {
         @include center-flexbox();
-        background-color: $btn-primary;
+
         border: none;
         color: $text-light;
         height: 100%;
         padding: 0 16px;
         font-size: 1rem;
         font-weight: 600;
+        background-color: $btn-primary;
+        &.login-nav {
+          background-color: transparent;
+        }
       }
     }
 

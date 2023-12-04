@@ -1,6 +1,6 @@
 // Import the `useParams()` hook
 import "./SinglePost.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useQuery, useMutation } from "@apollo/client";
 import Heart from "../../assets/images/heart-rating.svg";
@@ -14,7 +14,6 @@ import { ADD_TAG_TO_POST } from "../../utils/mutations";
 
 const SinglePost = ({ closeModal, postId }) => {
   const [tagInput, setTagInput] = useState("");
-
   const [addTagToPost, { error }] = useMutation(ADD_TAG_TO_POST, {
     refetchQueries: [QUERY_SINGLE_POST, "getSinglePost"],
   });
@@ -28,8 +27,6 @@ const SinglePost = ({ closeModal, postId }) => {
 
   const postAuthor = post?.postAuthor?._id || "";
   const currentUser = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
-
-  console.log(post);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -60,7 +57,25 @@ const SinglePost = ({ closeModal, postId }) => {
     setTagInput("");
   };
 
-  console.log(post);
+  useEffect(() => {
+    let timer;
+    const modal = document.querySelector(".sp-modal");
+    const spContainer = document.querySelector(".sp-container");
+    if (modal) {
+      // Add a slight delay before adding the class to allow the DOM to update
+      timer = setTimeout(() => {
+        modal.classList.add("sp-modal-visible");
+        spContainer.classList.add("sp-modal-visible");
+      }, 10); // A delay of 10 milliseconds
+    }
+    return () => {
+      if (modal) {
+        modal.classList.remove("sp-modal-visible");
+        spContainer.classList.remove("sp-modal-visible");
+      }
+      clearTimeout(timer); // Clear the timeout if the component unmounts before the class is added
+    };
+  }, []);
 
   return (
     <div className="sp-modal" onClick={closeModal}>
@@ -74,26 +89,6 @@ const SinglePost = ({ closeModal, postId }) => {
               <div className="sp-post-author">
                 <div className="sp-author-image-container">
                   <img src={post.postAuthor.profilePicture} />
-                  <div className="tag-form-container">
-                    <div className="tags-container">
-                      {post.tags.map((tag) => (
-                        <button className="tag" key={tag}>
-                          {tag}
-                        </button>
-                      ))}
-                    </div>
-                    {currentUser && currentUser === postAuthor ? (
-                      <form className="form-tags" onSubmit={handleTagSubmit}>
-                        <button type="submit">Add Tags</button>
-                        <input
-                          type="text"
-                          value={tagInput}
-                          placeholder="Enter tags separated by commas"
-                          onChange={(e) => setTagInput(e.target.value)}
-                        ></input>
-                      </form>
-                    ) : null}
-                  </div>
                 </div>
                 <h4>{post.postAuthor.username}</h4>
               </div>
@@ -108,6 +103,26 @@ const SinglePost = ({ closeModal, postId }) => {
               )}/5`}</div>
             </div>
           </div>
+          {/* <div className="tag-form-container">
+            <div className="tags-container">
+              {post.tags.map((tag) => (
+                <button className="tag" key={tag}>
+                  {tag}
+                </button>
+              ))}
+            </div>
+            {currentUser && currentUser === postAuthor ? (
+              <form className="form-tags" onSubmit={handleTagSubmit}>
+                <button type="submit">Add Tags</button>
+                <input
+                  type="text"
+                  value={tagInput}
+                  placeholder="Enter tags separated by commas"
+                  onChange={(e) => setTagInput(e.target.value)}
+                ></input>
+              </form>
+            ) : null}
+          </div> */}
 
           <CommentList comments={post.comments} />
           <CommentForm thisPostId={post._id} />

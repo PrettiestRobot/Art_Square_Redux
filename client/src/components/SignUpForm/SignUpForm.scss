@@ -19,3 +19,7 @@ form {
     background-color: $bg-alt;
   }
 }
+
+.form-compntent {
+  @include center-flexbox(column);
+}

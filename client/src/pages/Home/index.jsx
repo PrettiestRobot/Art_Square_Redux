@@ -57,11 +57,13 @@ const Home = () => {
                   Sign Up
                 </button>
               </div>
-              <div
-                className={`form-slider ${loginActive ? "login" : "signup"}`}
-              >
-                <SignUpForm />
-                <LoginForm />
+              <div className="form-slider-container">
+                <div
+                  className={`form-slider ${loginActive ? "login" : "signup"}`}
+                >
+                  <SignUpForm />
+                  <LoginForm />
+                </div>
               </div>
             </div>
           </div>
