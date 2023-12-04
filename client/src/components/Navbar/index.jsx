@@ -50,19 +50,20 @@ const Navbar = () => {
                 <Link className="nav-profile-picture" to={`/profile/${userId}`}>
                   <img src={user.profilePicture} alt="User profile" />
                 </Link>
-                <button className="btn" onClick={logout}>
+                <button className="nav-btn" onClick={logout}>
                   Logout
                 </button>
               </>
-            ) : // <>
-            //   <Link className="btn" to="/login">
-            //     Login
-            //   </Link>
-            //   <Link className="btn" to="/signup">
-            //     Signup
-            //   </Link>
-            // </>
-            null}
+            ) : (
+              <>
+                <Link className="nav-btn login-nav" to="/login">
+                  Log In
+                </Link>
+                <Link className="nav-btn " to="/signup">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>

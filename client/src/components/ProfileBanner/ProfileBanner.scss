@@ -4,18 +4,23 @@
 .profile-banner {
   width: 100%;
   @include center-flexbox(row);
-  border-bottom: 1px solid $secondary-bg;
 }
 
 .profile-container {
   display: flex;
-  display: relative;
+  position: relative;
   margin: 0;
-  padding: 2rem 0 2rem 0;
   max-width: 1090px;
   width: 812px;
-  color: white;
   line-height: 1.25rem;
+  background-color: $bg-alt;
+  .text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: $text-dark;
+  }
   .break1 {
     display: none;
   }
@@ -48,18 +53,10 @@
     .banner-username {
       margin-bottom: 8px;
     }
-    .follow {
-      display: none;
-    }
-    .mobile-follow {
-      display: block;
-      font-weight: 700;
-    }
   }
   .profile-banner-image {
-    width: 122px;
-    height: 122px;
-    border-radius: 50%;
+    width: 120px;
+    aspect-ratio: 1/1;
     margin-right: 16px;
     overflow: hidden;
     img {
@@ -68,9 +65,6 @@
       object-fit: cover;
     }
   }
-  .text-info {
-    @include center-flexbox(column);
-  }
 }
 
 .banner-username {
@@ -78,7 +72,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: $text-dark;
   margin-bottom: 16px;
 }
 
@@ -86,12 +80,8 @@
   display: none;
 }
 
-.follow-btn {
-  height: 38px;
-}
-
 .username {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 700;
   text-align: center;
 }
@@ -103,7 +93,8 @@
 }
 
 .general-info {
-  color: white;
+  color: $text-dark;
+  padding-bottom: 1rem;
 }
 
 .profile-image-container {
@@ -114,23 +105,43 @@
     width: 28px;
     height: 28px;
     aspect-ratio: 1/1;
-    bottom: 16px;
-    right: 16px;
+    top: 8px;
+    right: 24px;
     border-radius: 50%;
-    background-color: $primary-text;
+    background-color: none;
+    border: none;
+    opacity: 0.5;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.75;
+      transition: 0.3s ease-in-out;
+    }
     img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: fill;
+      max-width: 65%;
+      max-height: 65%;
+      object-fit: center;
     }
   }
 }
+.profile-image-form-modal {
+  @include center-flexbox(column);
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 99;
 
+  background-color: rgba(26, 26, 26, 0.75);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
+}
 .profile-image-form-container {
   display: flex;
   position: absolute;
-  opacity: 0;
-  pointer-events: none;
   form {
     @include center-flexbox(column);
     background-color: $secondary-bg;
@@ -147,11 +158,54 @@
     }
     button {
       width: 100%;
+      font-weight: 600;
     }
   }
+}
+
+.profile-image-form-modal {
+  pointer-events: none;
 }
 
 .modal-active {
   opacity: 1;
   pointer-events: all;
+}
+
+.profile-button-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  color: $text-light;
+  .follow-button {
+    @include center-flexbox(row);
+    border: none;
+    background-color: transparent;
+    color: $text-light;
+    .follow-right {
+      height: 34px;
+      aspect-ratio: 1/1;
+      background-color: $btn-primary;
+      @include center-flexbox(row);
+      font-weight: 600;
+    }
+    .follow-left {
+      padding: 0 16px 0 16px;
+      height: 34px;
+      @include center-flexbox(row);
+      background-color: $btn-primary-alt;
+      font-weight: 600;
+      background-color: $btn-primary-alt;
+    }
+  }
+}
+
+.banner-account-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }

@@ -1,0 +1,63 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.follow-list {
+  @include center-flexbox(column);
+  //   padding: 2rem;
+  z-index: 0;
+
+  .follow-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 260px);
+    gap: 16px;
+    @media (max-width: 860px) {
+      grid-template-columns: repeat(2, 260px);
+    }
+    @media (max-width: 584px) {
+      grid-template-columns: repeat(1, calc(100vw - 48px));
+    }
+  }
+}
+
+.followed-user-card {
+  @include center-flexbox(row);
+  justify-content: flex-start;
+  width: 100%;
+  background-color: $bg-alt;
+  border-radius: 40px;
+  overflow: hidden;
+  .followed-user-card-left {
+    overflow: hidden;
+    height: 60px;
+    border-radius: 40px;
+    aspect-ratio: 1/1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .followed-user-card-right {
+    @include center-flexbox(column);
+    width: 100%;
+    max-width: 200px;
+    color: $text-light;
+
+    .followed-user-card-right-top {
+      @include center-flexbox(row);
+      justify-content: flex-start;
+      font-size: 14px;
+      width: 100%;
+      padding-left: 8px;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+    .followed-user-card-right-bottom {
+      @include center-flexbox(row);
+      justify-content: flex-start;
+      font-size: 12px;
+      width: 100%;
+      padding-left: 8px;
+    }
+  }
+}

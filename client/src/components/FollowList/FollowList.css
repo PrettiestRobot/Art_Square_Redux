@@ -1,0 +1,77 @@
+.follow-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+.follow-list .follow-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
+  gap: 16px;
+}
+@media (max-width: 860px) {
+  .follow-list .follow-list-grid {
+    grid-template-columns: repeat(2, 260px);
+  }
+}
+@media (max-width: 584px) {
+  .follow-list .follow-list-grid {
+    grid-template-columns: repeat(1, calc(100vw - 48px));
+  }
+}
+
+.followed-user-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: hsl(201, 55%, 78%);
+  border-radius: 40px;
+  overflow: hidden;
+}
+.followed-user-card .followed-user-card-left {
+  overflow: hidden;
+  height: 60px;
+  border-radius: 40px;
+  aspect-ratio: 1/1;
+}
+.followed-user-card .followed-user-card-left img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.followed-user-card .followed-user-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  color: hsl(50, 46%, 95%);
+}
+.followed-user-card .followed-user-card-right .followed-user-card-right-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+  width: 100%;
+  padding-left: 8px;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+.followed-user-card .followed-user-card-right .followed-user-card-right-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 12px;
+  width: 100%;
+  padding-left: 8px;
+}/*# sourceMappingURL=FollowList.css.map */

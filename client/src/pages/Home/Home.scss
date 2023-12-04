@@ -2,77 +2,81 @@
 @import "../../assets/styles/Mixins";
 
 .layout-container {
-  @include center-flexbox(column);
-  width: 100%;
-}
-
-.home-header {
-  padding: 2rem 2rem 2rem 2rem;
-  background-color: $secondary-bg;
-  margin-top: 2rem;
-  border-radius: 0.3rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.welcome {
-  object-fit: fill;
-  margin-bottom: 1rem;
-}
-
-.header-buttons {
   @include center-flexbox(row);
   width: 100%;
-  .home-btn {
-    text-align: center;
-    display: inline-block;
-    padding: 0.5rem 1.2rem;
-    margin: 0;
-    text-decoration: none;
-    font-size: 1rem;
+}
 
-    border: 1px solid transparent;
-    outline: none;
-    color: #1a1a1a;
-    background-color: #aeaeae;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    width: 50%;
-    font-weight: 600;
-    &:hover {
-      background-color: #cecece;
+main {
+  @include center-flexbox(column);
+  width: 100%;
+  height: 100%;
+}
+.showcase-container {
+  height: 100vh;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+  .showcase-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100vh;
+  background-color: $bg-dark;
+}
+
+.home-form-container {
+  @include center-flexbox(column);
+  flex-grow: 1;
+  .home-form {
+    width: 450px;
+    margin-bottom: 24px;
+    .home-form-header {
+      @include center-flexbox(row);
+      margin-bottom: 24px;
+      .form-selector {
+        width: 225px;
+        height: 75px;
+        color: $text-dark;
+        background-color: $btn-secondary;
+        border: none;
+        font-weight: 600;
+
+        transition: 0.5s;
+        transition-timing-function: ease-in;
+      }
+      .active {
+        background-color: $btn-primary;
+        color: $text-light;
+        transition: 0.5s;
+        transition-timing-function: ease-out;
+      }
+      .inactive:hover {
+        cursor: pointer;
+      }
     }
   }
 }
 
-.sign-up-btn {
-  border-radius: 0.3rem 0 0 0.3rem;
-}
-
-.login-btn {
-  border-radius: 0 0.3rem 0.3rem 0;
-}
-
-.bg {
-  @include center-flexbox(column);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  opacity: 0.2;
-  .bg-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 75%;
-    object-fit: cover;
-    overflow: hidden;
-    z-index: -2;
-    img {
-      width: 100%;
+.form-slider-container {
+  overflow: hidden;
+  position: relative;
+  .form-slider {
+    @include center-flexbox(row);
+    align-items: flex-start;
+    transition: 0.5s;
+    transition-timing-function: ease-out;
+    gap: 16px;
+    &.login {
+      transform: translateX(calc(-50% + -8px));
+    }
+    &.signup {
+      transform: translateX(calc(50% + 8px));
     }
   }
 }

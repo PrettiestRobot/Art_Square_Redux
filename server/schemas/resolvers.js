@@ -25,6 +25,9 @@ const resolvers = {
       const user = await User.findById(userId);
       return user.followed.includes(followedId);
     },
+    followedUsers: async (_, { ids }) => {
+      return await User.find({ _id: { $in: ids } }).populate(["posts"]);
+    },
   },
 
   Mutation: {
@@ -103,6 +106,13 @@ const resolvers = {
           new: true,
           runValidators: true,
         }
+      );
+    },
+    addTagToPost: async (_, { postId, tag }) => {
+      return Post.findByIdAndUpdate(
+        postId,
+        { $addToSet: { tags: tag } },
+        { new: true }
       );
     },
     removeFollow: async (parent, { userId, followedId }) => {

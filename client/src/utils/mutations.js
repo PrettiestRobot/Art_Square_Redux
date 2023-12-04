@@ -116,6 +116,15 @@ export const ADD_FOLLOW = gql`
   }
 `;
 
+export const ADD_TAG_TO_POST = gql`
+  mutation AddTagToPost($postId: ID!, $tag: String!) {
+    addTagToPost(postId: $postId, tag: $tag) {
+      _id
+      tags
+    }
+  }
+`;
+
 export const REMOVE_FOLLOW = gql`
   mutation RemoveFollow($userId: ID!, $followedId: ID!) {
     removeFollow(userId: $userId, followedId: $followedId) {

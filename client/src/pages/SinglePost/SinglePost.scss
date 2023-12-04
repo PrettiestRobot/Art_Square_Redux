@@ -1,43 +1,101 @@
 @import "../../assets/styles/Variables";
 @import "../../assets/styles/Mixins";
 
-.single-post-page {
+.sp-modal {
   @include center-flexbox(column);
-  max-width: 812px;
-  padding-top: 24px;
-  .single-post-container {
-    .single-post-header {
-      background-color: $secondary-bg;
-      color: $primary-text;
-      width: 100%;
-      margin: 0;
-      padding: 1.5rem 1rem;
-      .single-post-sub-head {
-        font-size: 1rem;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  z-index: 99;
+  // pointer-events: none;
+  background-color: rgba(35, 47, 92, 0.25);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
+  .sp-container {
+    @include center-flexbox(row);
+    .sp-image-container {
+      position: relative;
+      height: 796px;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      .sp-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tag-form-container {
+        width: 100%;
+        background-color: rgba(26, 26, 26, 0.75);
+        .tags-container {
+          width: 100%;
+        }
+        .form-tags {
+          width: 100%;
+        }
       }
     }
-    .single-post-image-container {
-      width: 100%;
+    .sp-container-column {
+      @include spread-flexbox(column);
+      width: 536px;
+      height: 100%;
+      max-height: 796px;
       overflow: hidden;
-      .single-post-image {
+      .sp-header {
+        @include spread-flexbox(row);
+        height: 40px;
         width: 100%;
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        display: block;
-        border: none;
-        border-radius: 0;
-        transition: transform 0.75s;
+        background-color: $btn-primary;
+        color: $text-light;
+        box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.75);
+        .sp-header-left {
+          padding: 0 0 0 16px;
+          .sp-post-author {
+            @include center-flexbox(row);
+            gap: 0.5rem;
+            .sp-author-image-container {
+              width: 24px;
+              aspect-ratio: 1/1;
+              border-radius: 50%;
+              overflow: hidden;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+        .sp-title {
+          padding: 0 16px;
+        }
+        .sp-header-right {
+          @include center-flexbox(row);
+          background-color: $bg-alt;
+          padding: 0 16px;
+          gap: 8px;
+          height: 100%;
+          .sp-icon-box {
+            height: 18px;
+            width: 18px;
+            img {
+              max-width: 100%;
+              max-height: 100%;
+              object-fit: contain;
+            }
+          }
+          .sp-card-post-average {
+            color: $text-light;
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
       }
     }
   }
-}
-
-.comments-container {
-  width: 100%;
-  @include center-flexbox(column);
-}
-
-.single-post {
-  border-radius: 18px;
-  overflow: hidden;
 }

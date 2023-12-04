@@ -3,7 +3,7 @@ import "./PostList.css";
 import PostCard from "../PostCard";
 import Auth from "../../utils/auth";
 
-const PostList = ({ posts }) => {
+const PostList = ({ openSinglePostModal, posts }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
@@ -23,6 +23,8 @@ const PostList = ({ posts }) => {
                 imageUrl={post.imageUrl}
                 postId={post._id}
                 authId={authId}
+                openSinglePostModal={openSinglePostModal}
+                modalPostId={post._id}
               />
             </div>
           ))}

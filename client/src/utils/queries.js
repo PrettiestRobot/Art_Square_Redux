@@ -67,6 +67,7 @@ export const QUERY_SINGLE_POST = gql`
       imageUrl
       createdAt
       averageRating
+      tags
       comments {
         _id
         commentText
@@ -85,5 +86,18 @@ export const QUERY_SINGLE_POST = gql`
 export const IS_USER_FOLLOWED = gql`
   query IsUserFollowed($userId: ID!, $followedId: ID!) {
     isUserFollowed(userId: $userId, followedId: $followedId)
+  }
+`;
+
+export const QUERY_FOLLOWED_USERS = gql`
+  query GetFollowedUsers($ids: [ID!]!) {
+    followedUsers(ids: $ids) {
+      _id
+      username
+      profilePicture
+      posts {
+        averageRating
+      }
+    }
   }
 `;

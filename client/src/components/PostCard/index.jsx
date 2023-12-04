@@ -9,6 +9,8 @@ const PostCard = ({
   imageUrl,
   postAuthorId,
   authId,
+  openSinglePostModal,
+  modalPostId,
 }) => {
   return (
     <div className="card-container">
@@ -19,6 +21,8 @@ const PostCard = ({
         postId={postId}
         postAuthorId={postAuthorId}
         authId={authId}
+        openSinglePostModal={openSinglePostModal}
+        modalPostId={modalPostId}
       />
     </div>
   );

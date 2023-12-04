@@ -2,14 +2,19 @@ import "./Profile.css";
 import PostList from "../../components/PostList";
 import ProfileBanner from "../../components/ProfileBanner";
 import PostForm from "../../components/PostForm";
+import SinglePostModal from "../../components/SinglePost";
+import FollowList from "../../components/FollowList";
+import SectionTag from "../../components/SectionTag";
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER_BY_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
 import Auth from "../../utils/auth";
 
-import ProfileImage from "../../assets/images/profile.jpg";
-
 const Profile = () => {
+  const [singlePostModal, setSinglePostModal] = useState(false);
+  const [spPostId, setSpPostId] = useState("");
+
   const { userId } = useParams();
   const { data, loading, error } = useQuery(QUERY_USER_BY_ID, {
     variables: { id: userId },
@@ -21,6 +26,8 @@ const Profile = () => {
 
   const user = data?.userById || {};
   const userPosts = user?.posts || [];
+  const followed = user?.followed || [];
+  const followedIds = followed.map((follow) => follow._id);
 
   //calculate a users overal rating
   const totalRating = user.posts.reduce(
@@ -42,25 +49,58 @@ const Profile = () => {
     postId: post._id,
   }));
 
+  //modal logic
+
+  const openSinglePostModal = (event) => {
+    const thisPostId = event.currentTarget.getAttribute("data-post-id");
+    setSinglePostModal(true);
+    setSpPostId(thisPostId);
+  };
+
+  const closeSinglePostModal = (event) => {
+    event.stopPropagation();
+    if (event.target === event.currentTarget) {
+      setSinglePostModal(false);
+    }
+  };
+
   return (
-    <div>
-      <div className="user">
-        <div className="layout-container">
-          <ProfileBanner user={user} userRating={averageRating} />
-        </div>
-        {currentUser && currentUser === userId ? (
-          <div>
-            <PostForm userId={userId} />
-          </div>
-        ) : null}
-        <div className="layout-container">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList posts={posts.reverse()} />
-          )}
-        </div>
+    <div className={`profile-page ${singlePostModal ? "sp-modal-active" : ""}`}>
+      <div className="layout-container">
+        <ProfileBanner user={user} userRating={averageRating} />
       </div>
+      {followedIds.length === 0 ? null : (
+        <div className="layout-container">
+          <SectionTag tagName="Followed Blockheads" />
+        </div>
+      )}
+      {followedIds.length === 0 ? null : (
+        <div className="layout-container">
+          <FollowList FollowedIds={followedIds} />
+        </div>
+      )}
+      {currentUser && currentUser === userId ? (
+        <div className="layout-container">
+          <PostForm userId={userId} />
+        </div>
+      ) : null}
+      <div className="layout-container">
+        <SectionTag tagName={`Posts by ${user.username}`} />
+      </div>
+      <div className="layout-container">
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <PostList
+            openSinglePostModal={openSinglePostModal}
+            posts={posts.reverse()}
+          />
+        )}
+      </div>
+
+      {!singlePostModal ? null : (
+        <SinglePostModal closeModal={closeSinglePostModal} postId={spPostId} />
+      )}
     </div>
   );
 };

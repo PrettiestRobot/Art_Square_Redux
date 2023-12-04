@@ -3,7 +3,7 @@
 
 .gallery {
   @include center-flexbox(column);
-  padding: 2rem;
+  // padding: 2rem;
   z-index: 0;
   .gallery-grid {
     display: grid;

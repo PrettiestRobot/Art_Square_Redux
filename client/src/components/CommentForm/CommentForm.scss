@@ -1,14 +1,65 @@
 @import "../../assets/styles/Variables";
 @import "../../assets/styles/Mixins";
 
-.comment-form-container {
-  background-color: $secondary-bg;
-  color: $primary-text;
-
+.comment-form-component {
+  @include center-flexbox(column);
+  background-color: $bg-dark;
   width: 100%;
+  height: 130px;
+}
+.comment-form-container {
   margin: 0;
-  padding: 1.5rem 1rem;
+  @include center-flexbox(column);
+  p {
+    color: $text-light;
+    font-weight: 600;
+    line-height: 1.35rem;
+  }
   .comment-form {
-    @include spread-flexbox(row);
+    width: 100%;
+    height: 130px;
+    padding: 16px;
+    .comment-input-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      gap: 8px;
+      width: 100%;
+      .form-input {
+        width: 100%;
+      }
+      .current-user-image {
+        width: 32px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .send-button {
+        display: flex;
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        background-color: transparent;
+        width: 24px;
+        height: 24px;
+        opacity: 0.2;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
   }
 }
