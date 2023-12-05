@@ -6,6 +6,14 @@
   width: 100%;
 }
 
+#home-main {
+  padding: 0;
+}
+
+.home-gallery {
+  gap: 1rem;
+}
+
 main {
   @include center-flexbox(column);
   width: 100%;

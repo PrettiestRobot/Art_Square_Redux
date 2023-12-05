@@ -1,4 +1,5 @@
 import "./FollowList.css";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_FOLLOWED_USERS } from "../../utils/queries";
 
@@ -61,7 +62,11 @@ const FollowList = ({ FollowedIds = [] }) => {
     <div className="follow-list">
       <div className="follow-list-grid">
         {followedUsersAudited.map((user) => (
-          <div key={user._id} className="followed-user-card">
+          <Link
+            to={`/profile/${user._id}`}
+            key={user._id}
+            className="followed-user-card"
+          >
             <div className="followed-user-card-left">
               <img src={user.profilePicture} />
             </div>
@@ -76,7 +81,7 @@ const FollowList = ({ FollowedIds = [] }) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

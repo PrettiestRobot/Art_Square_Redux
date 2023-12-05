@@ -1,13 +1,13 @@
 import "./CommentList.css";
-
-import ProfileImage from "../../assets/images/profile.jpg";
+import { Link } from "react-router-dom";
 
 const CommentList = ({ comments = [] }) => {
+  console.log(comments);
   if (!comments.length) {
     return (
       <div className="comment-list-container">
-        <div className="comment-content">
-          <h3 className="comment-list-header">No Comments Yet</h3>
+        <div className="comment-null-container">
+          <h3 className="comment-null">No Comments Yet</h3>
         </div>
       </div>
     );
@@ -20,12 +20,17 @@ const CommentList = ({ comments = [] }) => {
           {comments &&
             comments.map((comment) => (
               <div key={comment._id} className="comment-container">
-                <div className="comment-profile-image">
+                <Link
+                  to={`/profile/${comment.commentAuthor._id}`}
+                  className="comment-profile-image"
+                >
                   <img src={comment.commentAuthor.profilePicture}></img>
-                </div>
+                </Link>
                 <div className="comment-content">
                   <h5>
-                    {comment.commentAuthor.username}
+                    <Link to={`/profile/${comment.commentAuthor._id}`}>
+                      {comment.commentAuthor.username}
+                    </Link>
                     <span className="comment-date">{comment.createdAt}</span>
                   </h5>
                   <div className="comment-text-box">

@@ -19,8 +19,6 @@
     @include center-flexbox(column);
     width: fit-content;
     height: fit-content;
-    max-width: 844px;
-    width: 100%;
     background-color: $secondary-bg;
     padding: 1rem;
     .count-validation {
@@ -32,12 +30,19 @@
 
       button {
         width: 100%;
+        transition: 0.2s ease-in-out;
       }
     }
     .post-form-login {
       color: $primary-text;
     }
   }
+}
+
+.post-btn:hover {
+  cursor: pointer;
+
+  background-color: $btn-secondary-hover;
 }
 
 .hidden {
@@ -72,7 +77,6 @@
 }
 .primary-post-btn-container {
   @include center-flexbox(column);
-  margin-top: 2rem;
   width: 100%;
   .primary-post-btn {
     width: 100%;
@@ -82,4 +86,10 @@
     border: none;
     border-radius: 25px;
   }
+}
+
+.validation-error {
+  color: $btn-primary;
+  font-size: 0.8rem;
+  font-weight: 600;
 }

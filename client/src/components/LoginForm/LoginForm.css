@@ -19,6 +19,10 @@ form button {
   border: none;
   background-color: hsl(201, 55%, 78%);
 }
+form button:hover {
+  cursor: pointer;
+  background-color: hsl(201, 55%, 70%);
+}
 
 .form-compntent {
   display: flex;

@@ -56,10 +56,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link className="nav-btn login-nav" to="/login">
+                <Link className="nav-btn login-nav" to="/">
                   Log In
                 </Link>
-                <Link className="nav-btn " to="/signup">
+                <Link className="nav-btn " to="/">
                   Sign Up
                 </Link>
               </>

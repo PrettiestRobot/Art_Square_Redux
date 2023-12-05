@@ -1,0 +1,12 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.footer {
+  @include center-flexbox(column);
+  background-color: $bg-dark;
+  width: 100%;
+  padding: 2rem;
+  color: $text-light;
+  margin-top: 2rem;
+  border-top: 3px solid $btn-primary;
+}

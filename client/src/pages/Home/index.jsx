@@ -4,10 +4,10 @@ import PostList from "../../components/PostList";
 import HomeNavbar from "../../components/HomeNavbar";
 import LoginForm from "../../components/LoginForm";
 import SignUpForm from "../../components/SignUpForm";
-import Welcome from "../../assets/images/welcome.svg";
+import SinglePostModal from "../../components/SinglePost";
+import SectionTag from "../../components/SectionTag";
 import "./Home.css";
 import { QUERY_POSTS } from "../../utils/queries";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
@@ -15,6 +15,9 @@ const Home = () => {
 
   const [loginActive, setLoginAcative] = useState(true);
   const [signUpActive, setSignUpActive] = useState(false);
+
+  const [singlePostModal, setSinglePostModal] = useState(false);
+  const [spPostId, setSpPostId] = useState("");
 
   const handleLoginClick = () => {
     setLoginAcative(true);
@@ -26,9 +29,24 @@ const Home = () => {
     setSignUpActive(true);
   };
 
+  //modal logic
+
+  const openSinglePostModal = (event) => {
+    const thisPostId = event.currentTarget.getAttribute("data-post-id");
+    setSinglePostModal(true);
+    setSpPostId(thisPostId);
+  };
+
+  const closeSinglePostModal = (event) => {
+    event.stopPropagation();
+    if (event.target === event.currentTarget) {
+      setSinglePostModal(false);
+    }
+  };
+
   return (
     <main>
-      <div className="layout-container">
+      <div className="layout-container" id="home-main">
         <div className="showcase-container">
           <img
             className="showcase-image"
@@ -69,9 +87,22 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="layout-container">
-        {loading ? <div>Loading...</div> : <PostList posts={posts} />}
+      <div className="main-container home-gallery">
+        <div className="layout-container">
+          <SectionTag tagName="Art Board" />
+        </div>
+        <div className="layout-container">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PostList posts={posts} openSinglePostModal={openSinglePostModal} />
+          )}
+        </div>
       </div>
+
+      {!singlePostModal ? null : (
+        <SinglePostModal closeModal={closeSinglePostModal} postId={spPostId} />
+      )}
     </main>
   );
 };

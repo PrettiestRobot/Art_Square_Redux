@@ -39,7 +39,6 @@
   }
   .comment-content {
     background-color: $bg-light;
-    padding: 0.875rem 1rem;
     border-radius: 50px;
     padding: 8px 24px;
     h5 {
@@ -59,5 +58,16 @@
       max-width: calc(45ch);
       line-height: 1.35rem;
     }
+  }
+}
+
+.comment-null-container {
+  @include center-flexbox(column);
+  width: 100%;
+  .comment-null {
+    background-color: $bg-light;
+
+    border-radius: 50px;
+    padding: 8px 24px;
   }
 }

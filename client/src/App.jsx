@@ -45,7 +45,7 @@ function App() {
       <div className="">
         {location.pathname !== "/" && <Navbar />}
 
-        <div className="main-container" style={mainContainerStyle}>
+        <div className="">
           <Outlet />
         </div>
         <Footer />

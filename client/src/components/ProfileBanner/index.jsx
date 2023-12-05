@@ -12,6 +12,8 @@ import Auth from "../../utils/auth";
 import { storage } from "../../utils/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
+import Heart from "../../assets/images/heart-rating.svg";
+import BrokenHeart from "../../assets/images/broken-heart-rating.svg";
 
 const ProfileBanner = ({ user, userRating }) => {
   const userId = Auth.loggedIn() ? Auth.getProfile()?.data?._id || "" : "";
@@ -136,25 +138,23 @@ const ProfileBanner = ({ user, userRating }) => {
             <div className="banner-username">
               <div className="username">{user.username}</div>
             </div>
-            {/* <div className="banner-account-info">
-              <p className="general-info">
-                Following {user.followed.length} blockheads
-                <span className="pipe1"> | </span>
-                <br className="break1"></br>
-                {user.posts.length} squares shared
-                <span className="pipe2"> | </span>
-                <br className="break2"></br>
-                {Math.round(userRating)} / 5 Square Rating
-              </p>
-            </div> */}
             <div className="banner-account-info">
               <p>
-                Following <span>{user.followed.length}</span> blockheads
+                Following <span className="bold">{user.followed.length}</span>{" "}
+                blockheads
               </p>
               <p>
-                <span>{user.posts.length}</span> squares shared
+                <span className="bold">{user.posts.length}</span> squares shared
               </p>
-              <p>{Math.round(userRating)} / 5 Square Rating</p>
+              <div className="profile-rating">
+                <div className="profile-icon-box">
+                  <img src={userRating >= 2 ? Heart : BrokenHeart} />
+                </div>
+                <p>
+                  <span className="bold">{Math.round(userRating)}/5</span>{" "}
+                  Square Rating
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -14,7 +14,6 @@ nav {
     color: $text-light;
     height: 100%;
     width: 100%;
-    max-width: 1920px;
     @include spread-flexbox();
 
     .nav-right {
@@ -23,7 +22,6 @@ nav {
       height: 100%;
       justify-content: flex-end;
       align-items: center;
-      padding-right: 24px;
       .nav-profile-picture {
         height: 2rem;
         aspect-ratio: 1/1;
@@ -43,11 +41,19 @@ nav {
         color: $text-light;
         height: 100%;
         padding: 0 16px;
-        font-size: 1rem;
+        font-size: 14px;
         font-weight: 600;
         background-color: $btn-primary;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          background-color: $btn-primary-hover;
+        }
         &.login-nav {
           background-color: transparent;
+          &:hover {
+            background-color: $btn-secondary-hover;
+          }
         }
       }
     }
@@ -64,5 +70,5 @@ nav {
 }
 
 .nav-brand {
-  height: 25px;
+  height: 24px;
 }

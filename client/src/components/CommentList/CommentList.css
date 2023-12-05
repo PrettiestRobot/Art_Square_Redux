@@ -37,7 +37,6 @@
 }
 .comment-container .comment-content {
   background-color: hsl(50, 46%, 95%);
-  padding: 0.875rem 1rem;
   border-radius: 50px;
   padding: 8px 24px;
 }
@@ -57,4 +56,17 @@
   word-wrap: break-word;
   max-width: 45ch;
   line-height: 1.35rem;
+}
+
+.comment-null-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.comment-null-container .comment-null {
+  background-color: hsl(50, 46%, 95%);
+  border-radius: 50px;
+  padding: 8px 24px;
 }/*# sourceMappingURL=CommentList.css.map */

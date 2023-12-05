@@ -16,7 +16,11 @@ form {
     width: 100%;
     height: 75px;
     border: none;
-    background-color: $bg-alt;
+    background-color: $btn-secondary;
+    &:hover {
+      cursor: pointer;
+      background-color: $btn-secondary-hover;
+    }
   }
 }
 

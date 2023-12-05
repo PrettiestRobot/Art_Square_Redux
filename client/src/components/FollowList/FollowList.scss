@@ -9,7 +9,7 @@
   .follow-list-grid {
     display: grid;
     grid-template-columns: repeat(3, 260px);
-    gap: 16px;
+    gap: 8px;
     @media (max-width: 860px) {
       grid-template-columns: repeat(2, 260px);
     }

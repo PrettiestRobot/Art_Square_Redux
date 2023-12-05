@@ -65,42 +65,50 @@ const Profile = () => {
   };
 
   return (
-    <div className={`profile-page ${singlePostModal ? "sp-modal-active" : ""}`}>
-      <div className="layout-container">
-        <ProfileBanner user={user} userRating={averageRating} />
-      </div>
-      {followedIds.length === 0 ? null : (
+    <div className="main-container">
+      <div
+        className={`profile-page ${singlePostModal ? "sp-modal-active" : ""}`}
+      >
         <div className="layout-container">
-          <SectionTag tagName="Followed Blockheads" />
+          <ProfileBanner user={user} userRating={averageRating} />
         </div>
-      )}
-      {followedIds.length === 0 ? null : (
+        {followedIds.length === 0 ? null : (
+          <div className="layout-container">
+            <SectionTag tagName="Followed Blockheads" />
+          </div>
+        )}
+        {followedIds.length === 0 ? null : (
+          <div className="layout-container">
+            <FollowList FollowedIds={followedIds} />
+          </div>
+        )}
         <div className="layout-container">
-          <FollowList FollowedIds={followedIds} />
+          <SectionTag tagName={`Posts by ${user.username}`} />
         </div>
-      )}
-      {currentUser && currentUser === userId ? (
+        {currentUser && currentUser === userId ? (
+          <div className="layout-container">
+            <PostForm userId={userId} />
+          </div>
+        ) : null}
+
         <div className="layout-container">
-          <PostForm userId={userId} />
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <PostList
+              openSinglePostModal={openSinglePostModal}
+              posts={posts.reverse()}
+            />
+          )}
         </div>
-      ) : null}
-      <div className="layout-container">
-        <SectionTag tagName={`Posts by ${user.username}`} />
-      </div>
-      <div className="layout-container">
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <PostList
-            openSinglePostModal={openSinglePostModal}
-            posts={posts.reverse()}
+
+        {!singlePostModal ? null : (
+          <SinglePostModal
+            closeModal={closeSinglePostModal}
+            postId={spPostId}
           />
         )}
       </div>
-
-      {!singlePostModal ? null : (
-        <SinglePostModal closeModal={closeSinglePostModal} postId={spPostId} />
-      )}
     </div>
   );
 };

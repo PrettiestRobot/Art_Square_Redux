@@ -26,8 +26,6 @@
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  max-width: 844px;
-  width: 100%;
   background-color: hsl(0, 0%, 15%);
   padding: 1rem;
 }
@@ -43,9 +41,15 @@
 }
 .form-post-modal .form-post-container .form-add-post button {
   width: 100%;
+  transition: 0.2s ease-in-out;
 }
 .form-post-modal .form-post-container .post-form-login {
   color: hsl(0, 0%, 95%);
+}
+
+.post-btn:hover {
+  cursor: pointer;
+  background-color: hsl(201, 55%, 70%);
 }
 
 .hidden {
@@ -87,7 +91,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
   width: 100%;
 }
 .primary-post-btn-container .primary-post-btn {
@@ -97,4 +100,10 @@
   background-color: hsl(0, 90%, 70%);
   border: none;
   border-radius: 25px;
+}
+
+.validation-error {
+  color: hsl(0, 90%, 70%);
+  font-size: 0.8rem;
+  font-weight: 600;
 }/*# sourceMappingURL=PostForm.css.map */

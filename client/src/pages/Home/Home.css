@@ -6,6 +6,14 @@
   width: 100%;
 }
 
+#home-main {
+  padding: 0;
+}
+
+.home-gallery {
+  gap: 1rem;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -57,7 +65,7 @@ main {
   width: 225px;
   height: 75px;
   color: hsl(228, 45%, 10%);
-  background-color: hsl(50, 86%, 80%);
+  background-color: hsl(201, 55%, 78%);
   border: none;
   font-weight: 600;
   transition: 0.5s;

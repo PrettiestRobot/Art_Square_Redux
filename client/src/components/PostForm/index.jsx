@@ -125,6 +125,7 @@ const PostForm = ({ userId }) => {
                   onChange={handleChange}
                 ></textarea>
                 <input
+                  className="post-form-input"
                   type="file"
                   accept="image/*"
                   onChange={handleSelectFile}
@@ -135,9 +136,7 @@ const PostForm = ({ userId }) => {
                 </button>
 
                 {error && (
-                  <div className="col-12 my-3 bg-danger text-white p-3">
-                    {error.message}
-                  </div>
+                  <div className="validation-error">{error.message}</div>
                 )}
               </form>
             </>
