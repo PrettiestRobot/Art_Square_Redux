@@ -11,7 +11,7 @@
 }
 
 .home-gallery {
-  gap: 1rem;
+  gap: 2rem;
 }
 
 main {
@@ -36,6 +36,10 @@ main {
   flex-grow: 1;
   height: 100vh;
   background-color: $bg-dark;
+}
+
+.home-gallery {
+  padding-top: 0;
 }
 
 .home-form-container {
