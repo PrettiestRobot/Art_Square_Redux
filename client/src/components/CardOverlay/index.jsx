@@ -37,7 +37,6 @@ const CardOverlay = ({
           </Link>
           <div
             onClick={openSinglePostModal}
-            // to={`/posts/${postId}`}
             className="card-expand-button"
             data-post-id={modalPostId}
           >

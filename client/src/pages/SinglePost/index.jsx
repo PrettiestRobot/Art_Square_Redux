@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import Heart from "../../assets/images/heart-rating.svg";
 import BrokenHeart from "../../assets/images/broken-heart-rating.svg";
+import TagsButton from "../../assets/images/tags-button.svg";
 
 import CommentList from "../../components/CommentList";
 import CommentForm from "../../components/CommentForm";

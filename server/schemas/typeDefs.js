@@ -18,7 +18,7 @@ const typeDefs = `
     ratings: [Rating]!
     comments: [Comment]!
     averageRating: Float
-    tags: [String]
+    tags: [Tag]
   }
 
   type Comment {
@@ -41,6 +41,12 @@ const typeDefs = `
     user: User
   }
 
+  type Tag {
+    _id: ID
+    tagName: String
+    posts: [Post]
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -53,8 +59,8 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     addFollow(userId: ID!, followedId: ID!): User
     addPost(postName: String! imageUrl: String! userId: ID!): Post
     addComment(
@@ -64,12 +70,13 @@ const typeDefs = `
       username: String!
     ): Post
     addTagToPost(postId: ID!, tag: String!): Post
-      updateUsername(userId: ID!, newUsername: String!): User
-  updateProfilePicture(userId: ID!, newProfilePicture: String!): User
+    addRating(postId: ID!, rating: Int!, ratingAuthor: ID!): Post
+    updateUsername(userId: ID!, newUsername: String!): User
+    updateProfilePicture(userId: ID!, newProfilePicture: String!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     removeFollow(userId: ID!, followedId: ID!): User
-    addRating(postId: ID!, rating: Int!, ratingAuthor: ID!): Post
+    removeTagFromPost(postId: ID!, tagId: ID!): Post
   }
 `;
 
