@@ -50,7 +50,7 @@ const Home = () => {
         <div className="showcase-container">
           <img
             className="showcase-image"
-            src="https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F6546c288ec94f60c653a8b9b%2F2023-11-12T00%3A02%3A36.317Z_cbcfb226-9f5a-413d-9212-53aa08409840?alt=media&token=3c8c0822-a34a-4a4c-a718-1d9456431a60"
+            src="https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F657167fc01d8362bba39738c%2F2023-12-07T06%3A37%3A06.205Z_5230c665-56f4-412d-984c-6f8d0691b8c1?alt=media&token=ce23afb4-f03c-406a-b803-e969c7079404"
           />
         </div>
         <div className="home-container">

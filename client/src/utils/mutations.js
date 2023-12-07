@@ -120,17 +120,31 @@ export const ADD_TAG_TO_POST = gql`
   mutation AddTagToPost($postId: ID!, $tag: String!) {
     addTagToPost(postId: $postId, tag: $tag) {
       _id
-      tags
+      tags {
+        _id
+        tagName
+      }
     }
   }
 `;
-
 export const REMOVE_FOLLOW = gql`
   mutation RemoveFollow($userId: ID!, $followedId: ID!) {
     removeFollow(userId: $userId, followedId: $followedId) {
       _id
       followed {
         _id
+      }
+    }
+  }
+`;
+
+export const REMOVE_TAG_FROM_POST = gql`
+  mutation RemoveTagFromPost($postId: ID!, $tagId: ID!) {
+    removeTagFromPost(postId: $postId, tagId: $tagId) {
+      _id
+      tags {
+        _id
+        tagName
       }
     }
   }
