@@ -1,0 +1,66 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.slideshow {
+  height: 100vh;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.slide {
+  @include center-flexbox(column);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  overflow: hidden;
+  &.slide-active {
+    opacity: 1;
+  }
+  .slide-img {
+    object-fit: cover;
+    width: 120%;
+    height: 120%;
+    transition: transform 20s ease;
+    &.slide-active {
+      transform: scale(90%);
+    }
+  }
+}
+
+.feature-title-container {
+  @include center-flexbox(column);
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: $btn-primary;
+  transform: translateX(-100%);
+  transition-delay: 0.5s;
+  transition: 0.2s ease-in;
+  overflow: hidden;
+  opacity: 0;
+  &.slide-active {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+.feature-title {
+  padding: 1rem;
+
+  transform: translateY(100%);
+  color: $text-light;
+  transition: 0.5s ease-in;
+
+  opacity: 0;
+  &.slide-active {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

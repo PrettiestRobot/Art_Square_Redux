@@ -24,16 +24,40 @@
   }
 
   .profile-button-container {
+    display: flex;
     position: absolute;
     top: 0;
     right: 0;
+
     color: $text-light;
+    .follow-button {
+      @include center-flexbox(row);
+      border: none;
+      background-color: transparent;
+      color: $text-light;
+      .follow-right {
+        height: 34px;
+        aspect-ratio: 1/1;
+        background-color: $btn-primary;
+        @include center-flexbox(row);
+        font-weight: 600;
+      }
+      .follow-left {
+        padding: 0 16px 0 16px;
+        height: 34px;
+        @include center-flexbox(row);
+        background-color: $btn-primary-alt;
+        font-weight: 600;
+        background-color: $btn-primary-alt;
+      }
+    }
   }
 
   .profile-image-container {
     position: relative;
 
     .edit-profile-image-button {
+      @include center-flexbox(row);
       position: absolute;
       width: 28px;
       height: 28px;
@@ -45,8 +69,8 @@
       opacity: 0.5;
       transition: 0.3s ease-in-out;
       .edit-button-image {
-        width: 75%;
-        height: 75%;
+        width: 65%;
+        height: 65%;
         opacity: 0.75;
         object-fit: contain;
       }

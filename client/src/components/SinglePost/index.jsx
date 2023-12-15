@@ -112,7 +112,12 @@ const SinglePost = ({ closeModal, postId }) => {
       <div className="sp-container">
         <div className="sp-image-container">
           <div className="tags-container">
-            <div className="tag-form-container" id="tag-form-container">
+            <div
+              className={`tag-form-container ${
+                tagListToggle ? "tag-active" : ""
+              }`}
+              id="tag-form-container"
+            >
               <div className="tag-list-container">
                 <div
                   className={`tags-list ${tagListToggle ? "tag-active" : ""}`}

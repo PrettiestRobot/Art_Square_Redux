@@ -32,7 +32,7 @@ main {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .home-container {
@@ -41,6 +41,9 @@ main {
   flex-grow: 1;
   height: 100vh;
   background-color: hsl(228, 45%, 25%);
+  background-image: url("../../assets/images/texture2.png");
+  background-blend-mode: multiply;
+  background-size: cover;
 }
 
 .home-gallery {
@@ -104,4 +107,4 @@ main {
 }
 .form-slider-container .form-slider.signup {
   transform: translateX(calc(50% + 8px));
-}/*# sourceMappingURL=Home.css.map */
+} /*# sourceMappingURL=Home.css.map */

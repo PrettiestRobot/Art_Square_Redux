@@ -36,8 +36,10 @@ main {
   flex-grow: 1;
   height: 100vh;
   background-color: $bg-dark;
+  background-image: url("../../assets/images/texture2.png");
+  background-blend-mode: multiply;
+  background-size: cover;
 }
-
 .home-gallery {
   padding-top: 0;
 }

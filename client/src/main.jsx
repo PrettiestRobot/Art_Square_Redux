@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import SinglePost from "./pages/SinglePost/index.jsx";
 import Profile from "./pages/Profile/index.jsx";
 import ErrorPage from "./pages/ErrorPage";
+import FeaturedGallery from "./components/FeaturedGallery";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:userId",
         element: <Profile />,
+      },
+      {
+        path: "/test",
+        element: <FeaturedGallery />,
       },
     ],
   },

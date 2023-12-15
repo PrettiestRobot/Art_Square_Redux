@@ -1,0 +1,68 @@
+.slideshow {
+  height: 100vh;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  overflow: hidden;
+}
+.slide.slide-active {
+  opacity: 1;
+}
+.slide .slide-img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 120%;
+  height: 120%;
+  transition: transform 20s ease;
+}
+.slide .slide-img.slide-active {
+  transform: scale(90%);
+}
+
+.feature-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: hsl(0, 90%, 70%);
+  transform: translateX(-100%);
+  transition-delay: 0.5s;
+  transition: 0.2s ease-in;
+  overflow: hidden;
+  opacity: 0;
+}
+.feature-title-container.slide-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.feature-title {
+  padding: 1rem;
+  transform: translateY(100%);
+  color: hsl(50, 46%, 95%);
+  transition: 0.5s ease-in;
+  opacity: 0;
+}
+.feature-title.slide-active {
+  transform: translateY(0%);
+  opacity: 1;
+} /*# sourceMappingURL=FeaturedGallery.css.map */

@@ -6,6 +6,7 @@ import LoginForm from "../../components/LoginForm";
 import SignUpForm from "../../components/SignUpForm";
 import SinglePostModal from "../../components/SinglePost";
 import SectionTag from "../../components/SectionTag";
+import FeatureGallery from "../../components/FeaturedGallery";
 import "./Home.css";
 import { QUERY_POSTS } from "../../utils/queries";
 
@@ -47,12 +48,7 @@ const Home = () => {
   return (
     <main>
       <div className="layout-container" id="home-main">
-        <div className="showcase-container">
-          <img
-            className="showcase-image"
-            src="https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F657167fc01d8362bba39738c%2F2023-12-07T06%3A37%3A06.205Z_5230c665-56f4-412d-984c-6f8d0691b8c1?alt=media&token=ce23afb4-f03c-406a-b803-e969c7079404"
-          />
-        </div>
+        <FeatureGallery />
         <div className="home-container">
           <HomeNavbar />
           <div className="home-form-container">

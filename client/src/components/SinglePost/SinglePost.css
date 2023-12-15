@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   transform: translateY(100%);
+  box-shadow: 1px 3px 10px 0px rgba(0, 0, 0, 0.75);
 }
 .sp-modal .sp-container.sp-modal-visible {
   transform: translateY(0);
@@ -148,6 +149,7 @@ body {
   width: 100%;
   gap: 6px;
   padding: 8px 38px 8px 8px;
+  transition: 0.3s ease-in-out;
 }
 .tag-form-container .tag-list-container .tags-list.tag-active {
   opacity: 1;
@@ -175,17 +177,18 @@ body {
   color: hsl(0, 90%, 65%);
 }
 .tag-form-container .form-tags {
-  height: 24px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 35px;
   width: 100%;
   gap: 0;
   overflow: hidden;
-  padding: 0 8px;
+  padding: 0 8px 8px 8px;
   opacity: 0;
   pointer-events: none;
+  transition: 0.3s ease-in-out;
 }
 .tag-form-container .form-tags.tag-active {
   opacity: 1;
@@ -195,7 +198,7 @@ body {
   height: 100%;
   width: 100%;
   border: none;
-  border-radius: none;
+  border-radius: 0 25px 25px 0;
   padding-left: 8px;
 }
 .tag-form-container .form-tags button {
@@ -236,4 +239,8 @@ body {
 
 #tag-form-container {
   background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s ease-in-out;
+}
+#tag-form-container.tag-active {
+  background-color: rgba(0, 0, 0, 0.5);
 }/*# sourceMappingURL=SinglePost.css.map */
