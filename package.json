@@ -1,7 +1,6 @@
 {
   "name": "art-square-redux",
   "version": "1.0.0",
-  "description": "",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -27,5 +26,14 @@
     "firebase": "^10.5.2",
     "react-transition-group": "^4.4.5",
     "uuid": "^9.0.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrettiestRobot/Art_Square_Redux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PrettiestRobot/Art_Square_Redux/issues"
+  },
+  "homepage": "https://github.com/PrettiestRobot/Art_Square_Redux#readme",
+  "description": ""
 }
