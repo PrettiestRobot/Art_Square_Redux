@@ -13,7 +13,11 @@
   max-width: 1090px;
   width: 100%;
   line-height: 1.25rem;
-  background-color: hsl(201, 55%, 78%);
+  background-color: hsl(228, 45%, 25%);
+  background-image: url("../../assets/images/texture2.png");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center 60%;
 }
 @media (max-width: 860px) {
   .profile-container {
@@ -108,7 +112,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  color: hsl(228, 45%, 10%);
+  color: hsl(50, 46%, 95%);
   gap: 6px;
   padding: 1rem;
 }
@@ -122,7 +126,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  color: hsl(228, 45%, 10%);
+  color: hsl(50, 46%, 95%);
   font-size: 20px;
   font-weight: 600;
 }

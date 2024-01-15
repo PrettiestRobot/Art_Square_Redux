@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import PostList from "../../components/PostList";
 import HomeNavbar from "../../components/HomeNavbar";
@@ -7,12 +7,13 @@ import SignUpForm from "../../components/SignUpForm";
 import SinglePostModal from "../../components/SinglePost";
 import SectionTag from "../../components/SectionTag";
 import FeatureGallery from "../../components/FeaturedGallery";
+import ExploreGallery from "../../components/ExploreGallery";
 import "./Home.css";
-import { QUERY_POSTS } from "../../utils/queries";
+// import { QUERY_POSTS } from "../../utils/queries";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+  // const { loading, data } = useQuery(QUERY_POSTS);
+  // const posts = data?.posts || [];
 
   const [loginActive, setLoginAcative] = useState(true);
   const [signUpActive, setSignUpActive] = useState(false);
@@ -54,6 +55,11 @@ const Home = () => {
           <div className="home-form-container">
             <div className="home-form">
               <div className="home-form-header">
+                <div
+                  className={`form-selector-bg ${
+                    loginActive ? "login" : "signup"
+                  }`}
+                ></div>
                 <button
                   className={`form-selector ${
                     loginActive ? "active" : "inactive"
@@ -83,22 +89,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="main-container home-gallery">
-        <div className="layout-container">
-          <SectionTag tagName="Art Board" />
-        </div>
-        <div className="layout-container">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList posts={posts} openSinglePostModal={openSinglePostModal} />
-          )}
-        </div>
-      </div>
-
-      {!singlePostModal ? null : (
-        <SinglePostModal closeModal={closeSinglePostModal} postId={spPostId} />
-      )}
     </main>
   );
 };

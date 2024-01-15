@@ -1,0 +1,18 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.gallery {
+  @include center-flexbox(column);
+  z-index: 0;
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 260px);
+    gap: 8px;
+    @media (max-width: 860px) {
+      grid-template-columns: repeat(2, 260px);
+    }
+    @media (max-width: 584px) {
+      grid-template-columns: repeat(1, calc(100vw - 48px));
+    }
+  }
+}

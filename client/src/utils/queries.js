@@ -104,3 +104,23 @@ export const QUERY_FOLLOWED_USERS = gql`
     }
   }
 `;
+
+export const SEARCH_POSTS_QUERY = gql`
+  query SearchPosts($searchString: String!) {
+    searchPosts(searchString: $searchString) {
+      _id
+      postName
+      postAuthor {
+        _id
+        username
+        profilePicture
+      }
+      imageUrl
+      createdAt
+      tags {
+        _id
+        tagName
+      }
+    }
+  }
+`;

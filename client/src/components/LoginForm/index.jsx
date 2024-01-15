@@ -42,42 +42,33 @@ const Login = () => {
   };
 
   return (
-    <div className="for-component">
-      {data ? (
-        <p>
-          Success! You may now head <Link to="/">back to the homepage.</Link>
-        </p>
-      ) : (
-        <form onSubmit={handleFormSubmit}>
-          <input
-            className="form-input"
-            placeholder="Your email"
-            name="email"
-            type="email"
-            value={formState.email}
-            onChange={handleChange}
-          />
-          <input
-            className="form-input"
-            placeholder="******"
-            name="password"
-            type="password"
-            value={formState.password}
-            onChange={handleChange}
-          />
-          <button
-            className="form-button"
-            style={{ cursor: "pointer" }}
-            type="submit"
-          >
-            Submit
-          </button>
-        </form>
-      )}
-
-      {error && (
-        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
-      )}
+    <div className="form-component">
+      {error && <div className="error-message">{error.message}</div>}
+      <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Your email"
+          name="email"
+          type="email"
+          value={formState.email}
+          onChange={handleChange}
+        />
+        <input
+          className="form-input"
+          placeholder="******"
+          name="password"
+          type="password"
+          value={formState.password}
+          onChange={handleChange}
+        />
+        <button
+          className="form-button"
+          style={{ cursor: "pointer" }}
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 };

@@ -58,6 +58,10 @@ const typeDefs = `
     followedUsers(ids: [ID!]!): [User]
   }
 
+  extend type Query {
+  searchPosts(searchString: String!): [Post]
+}
+
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
@@ -78,6 +82,8 @@ const typeDefs = `
     removeFollow(userId: ID!, followedId: ID!): User
     removeTagFromPost(postId: ID!, tagId: ID!): Post
   }
+
+
 `;
 
 module.exports = typeDefs;

@@ -1,0 +1,31 @@
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.searchbar input {
+  height: 32px;
+  width: 100%;
+  border: none;
+  padding: 8px;
+}
+.searchbar .search-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 56px;
+  background-color: hsl(0, 90%, 70%);
+  border: none;
+  cursor: pointer;
+}
+.searchbar .search-button:hover {
+  background-color: hsl(0, 90%, 65%);
+}
+.searchbar .search-button img {
+  height: 20px;
+  width: 20px;
+}/*# sourceMappingURL=Search.css.map */

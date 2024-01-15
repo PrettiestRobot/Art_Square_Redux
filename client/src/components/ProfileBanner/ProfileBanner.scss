@@ -13,7 +13,11 @@
   max-width: 1090px;
   width: 100%;
   line-height: 1.25rem;
-  background-color: $bg-alt;
+  background-color: $bg-dark;
+  background-image: url("../../assets/images/texture2.png");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center 60%;
 
   @media (max-width: 860px) {
     max-width: 536px;
@@ -99,7 +103,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    color: $text-dark;
+    color: $text-light;
     gap: 6px;
     padding: 1rem;
 
@@ -113,7 +117,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    color: $text-dark;
+    color: $text-light;
     font-size: 20px;
     font-weight: 600;
   }
