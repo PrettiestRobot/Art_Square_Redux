@@ -1,0 +1,30 @@
+@import "../../assets/styles/Variables";
+@import "../../assets/styles/Mixins";
+
+.searchbar {
+  @include center-flexbox(row);
+  width: 100%;
+  input {
+    height: 32px;
+    width: 100%;
+    border: none;
+    // border-radius: 0 25px 25px 0;
+    padding: 8px;
+  }
+  .search-button {
+    @include center-flexbox(row);
+    height: 32px;
+    width: 56px;
+    // border-radius: 25px 0 0 25px;
+    background-color: $btn-primary;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background-color: $btn-primary-hover;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

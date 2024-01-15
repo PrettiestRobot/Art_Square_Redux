@@ -5,6 +5,10 @@ form {
   @include center-flexbox(column);
   min-width: 450px;
   gap: 24px;
+  @include respond-to("mobile") {
+    width: 75vw;
+    min-width: 100%;
+  }
   .form-input {
     width: 100%;
     padding: 24px 40px;
@@ -17,6 +21,7 @@ form {
     height: 75px;
     border: none;
     background-color: $btn-secondary;
+    font-weight: 600;
     &:hover {
       cursor: pointer;
       background-color: $btn-secondary-hover;
@@ -24,6 +29,18 @@ form {
   }
 }
 
-.form-compntent {
+.form-component {
   @include center-flexbox(column);
+}
+
+.error-message {
+  background-color: $btn-primary;
+  color: $text-light;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 18px;
 }

@@ -52,27 +52,46 @@ main {
     margin-bottom: 24px;
     .home-form-header {
       @include center-flexbox(row);
+      position: relative;
       margin-bottom: 24px;
-      .form-selector {
+      background-color: $btn-secondary;
+
+      .form-selector-bg {
+        z-index: 0;
+        position: absolute;
         width: 225px;
         height: 75px;
-        color: $text-dark;
-        background-color: $btn-secondary;
-        border: none;
-        font-weight: 600;
-
-        transition: 0.5s;
-        transition-timing-function: ease-in;
-      }
-      .active {
         background-color: $btn-primary;
-        color: $text-light;
+        pointer-events: none;
         transition: 0.5s;
-        transition-timing-function: ease-out;
+        transition-timing-function: ease-in-out;
+        &.login {
+          transform: translateX(-50%);
+        }
+        &.signup {
+          transform: translateX(50%);
+        }
       }
-      .inactive:hover {
-        cursor: pointer;
-      }
+    }
+    .form-selector {
+      z-index: 1;
+      width: 225px;
+      height: 75px;
+      color: $text-dark;
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      font-weight: 600;
+
+      transition: 0.5s;
+      transition-timing-function: ease-in;
+    }
+    .active {
+      color: $text-light;
+      transition: 0.5s;
+      transition-timing-function: ease-out;
+    }
+    .inactive:hover {
+      cursor: pointer;
     }
   }
 }

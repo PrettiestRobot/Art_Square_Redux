@@ -5,7 +5,9 @@ import PostForm from "../../components/PostForm";
 import SinglePostModal from "../../components/SinglePost";
 import FollowList from "../../components/FollowList";
 import SectionTag from "../../components/SectionTag";
-import { useState } from "react";
+import ExploreGallery from "../../components/ExploreGallery";
+import SearchGallery from "../../components/Search";
+import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER_BY_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
@@ -14,8 +16,42 @@ import Auth from "../../utils/auth";
 const Profile = () => {
   const [singlePostModal, setSinglePostModal] = useState(false);
   const [spPostId, setSpPostId] = useState("");
+  const [gallerySelectorState, setGallerySelectorState] =
+    useState("post-gallery");
+
+  const [postGalleryActive, setPostGalleryActive] = useState(true);
+  const [exploreGalleryActive, setExploreGalleryActive] = useState(false);
+  const [searchGalleryActive, setSearchGalleryActive] = useState(false);
+
+  const handlePostGalleryClick = () => {
+    setPostGalleryActive(true);
+    setExploreGalleryActive(false);
+    setSearchGalleryActive(false);
+    setGallerySelectorState("post-gallery");
+  };
+
+  const handleExploreGalleryClick = () => {
+    setPostGalleryActive(false);
+    setExploreGalleryActive(true);
+    setSearchGalleryActive(false);
+    setGallerySelectorState("explore-gallery");
+  };
+
+  const handleSearchGalleryClick = () => {
+    setPostGalleryActive(false);
+    setExploreGalleryActive(false);
+    setSearchGalleryActive(true);
+    setGallerySelectorState("search-gallery");
+  };
 
   const { userId } = useParams();
+
+  useEffect(() => {
+    setPostGalleryActive(true);
+    setExploreGalleryActive(false);
+    setSearchGalleryActive(false);
+  }, [userId]);
+
   const { data, loading, error } = useQuery(QUERY_USER_BY_ID, {
     variables: { id: userId },
     fetchPolicy: "network-only",
@@ -82,25 +118,74 @@ const Profile = () => {
             <FollowList FollowedIds={followedIds} />
           </div>
         )}
-        <div className="layout-container">
-          <SectionTag tagName={`Posts by ${user.username}`} />
-        </div>
+
         {currentUser && currentUser === userId ? (
+          <div className="layout-container gallery-selectors">
+            <div
+              className={`gallery-selectors-bg ${gallerySelectorState}`}
+            ></div>
+            <button
+              className={`gallery-selector ${
+                postGalleryActive ? "active" : "inactive"
+              }`}
+              onClick={handlePostGalleryClick}
+            >
+              Your Posts
+            </button>
+            <button
+              className={`gallery-selector ${
+                exploreGalleryActive ? "active" : "inactive"
+              }`}
+              onClick={handleExploreGalleryClick}
+            >
+              Explore
+            </button>
+            <button
+              className={`gallery-selector ${
+                searchGalleryActive ? "active" : "inactive"
+              }`}
+              onClick={handleSearchGalleryClick}
+            >
+              Search
+            </button>
+          </div>
+        ) : (
           <div className="layout-container">
-            <PostForm userId={userId} />
+            <SectionTag tagName={`Posts by ${user.username}`} />
+          </div>
+        )}
+
+        {postGalleryActive ? (
+          <div className="layout-container-column">
+            {currentUser && currentUser === userId ? (
+              <div className="layout-container">
+                <PostForm userId={userId} />
+              </div>
+            ) : null}
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <div className="layout-container">
+                <PostList
+                  openSinglePostModal={openSinglePostModal}
+                  posts={posts.reverse()}
+                />
+              </div>
+            )}
           </div>
         ) : null}
 
-        <div className="layout-container">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <PostList
-              openSinglePostModal={openSinglePostModal}
-              posts={posts.reverse()}
-            />
-          )}
-        </div>
+        {exploreGalleryActive ? (
+          <div className="layout-container">
+            <ExploreGallery openSinglePostModal={openSinglePostModal} />
+          </div>
+        ) : null}
+
+        {searchGalleryActive ? (
+          <div className="layout-container">
+            <SearchGallery openSinglePostModal={openSinglePostModal} />
+          </div>
+        ) : null}
 
         {!singlePostModal ? null : (
           <SinglePostModal

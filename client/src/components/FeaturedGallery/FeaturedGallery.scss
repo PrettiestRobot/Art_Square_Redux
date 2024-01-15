@@ -6,6 +6,12 @@
   aspect-ratio: 1/1;
   flex-shrink: 0;
   position: relative;
+  @include respond-to("mobile") {
+    height: 100vw;
+    width: 100%;
+    position: absolute;
+    top: 35px;
+  }
 }
 
 .slide {

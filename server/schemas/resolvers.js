@@ -29,6 +29,24 @@ const resolvers = {
     followedUsers: async (_, { ids }) => {
       return await User.find({ _id: { $in: ids } }).populate(["posts"]);
     },
+
+    searchPosts: async (_, { searchString }) => {
+      // Find matching tags first
+      const matchingTags = await Tag.find({
+        tagName: { $regex: searchString, $options: "i" },
+      });
+
+      // Extract the tag IDs
+      const tagIds = matchingTags.map((tag) => tag._id);
+
+      // Find posts that match postName or have one of the matching tag IDs
+      return await Post.find({
+        $or: [
+          { postName: { $regex: searchString, $options: "i" } },
+          { tags: { $in: tagIds } },
+        ],
+      });
+    },
   },
 
   Mutation: {

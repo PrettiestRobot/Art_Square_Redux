@@ -1,6 +1,8 @@
 import "./FollowList.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import Heart from "../../assets/images/heart-rating.svg";
+import BrokenHeart from "../../assets/images/broken-heart-rating.svg";
 import { QUERY_FOLLOWED_USERS } from "../../utils/queries";
 
 const FollowList = ({ FollowedIds = [] }) => {
@@ -70,16 +72,8 @@ const FollowList = ({ FollowedIds = [] }) => {
             <div className="followed-user-card-left">
               <img src={user.profilePicture} />
             </div>
-            <div className="followed-user-card-right">
-              <div className="followed-user-card-right-top">
-                {user.username}
-              </div>
-              <div className="followed-user-card-right-bottom">
-                <p>
-                  {user.posts.length} Squares Shared |{" "}
-                  {Math.round(user.averageRating)}/5
-                </p>
-              </div>
+            <div className="follower-icon-box">
+              <img src={user.averageRating >= 2 ? Heart : BrokenHeart} />
             </div>
           </Link>
         ))}
