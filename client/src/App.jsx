@@ -48,7 +48,6 @@ function App() {
         <div className="">
           <Outlet />
         </div>
-        <Footer />
       </div>
     </ApolloProvider>
   );

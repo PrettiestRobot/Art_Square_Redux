@@ -10,24 +10,10 @@
   padding: 0;
 }
 
-.home-gallery {
-  gap: 2rem;
-}
-
 main {
   @include center-flexbox(column);
   width: 100%;
   height: 100%;
-}
-.showcase-container {
-  height: 100vh;
-  aspect-ratio: 1/1;
-  flex-shrink: 0;
-  .showcase-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
 
 .home-container {
@@ -35,55 +21,88 @@ main {
   flex-direction: column;
   flex-grow: 1;
   height: 100vh;
+  width: 100%;
   background-color: $bg-dark;
   background-image: url("../../assets/images/texture2.png");
   background-blend-mode: multiply;
   background-size: cover;
+  align-items: center;
 }
 .home-gallery {
   padding-top: 0;
 }
 
-.home-form-container {
-  @include center-flexbox(column);
-  flex-grow: 1;
-  .home-form {
-    width: 450px;
-    margin-bottom: 24px;
-    .home-form-header {
-      @include center-flexbox(row);
-      position: relative;
-      margin-bottom: 24px;
-      background-color: $btn-secondary;
+.home-forms-container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  width: 100%;
+  height: 100%;
+  @include respond-to("mobile") {
+    width: calc(100vw - 32px);
+  }
+  .home-forms {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 390px;
 
-      .form-selector-bg {
+    @include respond-to(mobile) {
+      width: calc(100vw - 32px);
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+    .home-form-header {
+      display: flex;
+      width: 100%;
+      padding: 12px 12px 0 12px;
+      // background-color: rgba(0, 0, 0, 0.25);
+      @include respond-to(mobile) {
+        width: 100%;
+      }
+      .form-selector-active {
         z-index: 0;
         position: absolute;
-        width: 225px;
-        height: 75px;
+
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
         background-color: $btn-primary;
         pointer-events: none;
         transition: 0.5s;
         transition-timing-function: ease-in-out;
         &.login {
-          transform: translateX(-50%);
+          transform: translateX(0%);
         }
         &.signup {
-          transform: translateX(50%);
+          transform: translateX(100%);
         }
       }
     }
     .form-selector {
       z-index: 1;
-      width: 225px;
-      height: 75px;
       color: $text-dark;
-      background-color: rgba(0, 0, 0, 0);
+
+      width: 50%;
+      text-align: center;
+      font-weight: 700;
+      padding: 12px;
+      font-size: 1rem;
       border: none;
-      font-weight: 600;
+      border-radius: 0;
+      background-color: rgba(0, 0, 0, 0);
 
       transition: 0.5s;
       transition-timing-function: ease-in;
+      @include respond-to(mobile) {
+        width: 100%;
+      }
     }
     .active {
       color: $text-light;
@@ -97,19 +116,34 @@ main {
 }
 
 .form-slider-container {
+  display: flex;
+  width: 390px;
   overflow: hidden;
-  position: relative;
+  @include respond-to(mobile) {
+    width: calc(100vw - 32px);
+  }
   .form-slider {
-    @include center-flexbox(row);
-    align-items: flex-start;
+    display: flex;
+    gap: 8px;
+    width: 390px;
     transition: 0.5s;
     transition-timing-function: ease-out;
-    gap: 16px;
     &.login {
-      transform: translateX(calc(-50% + -8px));
+      transform: translateX(calc(-100% + -8px));
     }
     &.signup {
-      transform: translateX(calc(50% + 8px));
+      transform: translateX(calc(0%));
+    }
+    @include respond-to(mobile) {
+      gap: 8px;
+      width: calc(100vw - 32px);
     }
   }
+}
+
+.form-selector-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: $btn-secondary;
 }

@@ -33,7 +33,7 @@
   transition: 1s;
   transition-timing-function: ease-in-out;
 }
-@media (max-width: 768px) {
+@media (max-width: 390px) {
   .modal-bg-one {
     width: 200vh;
     height: 200vh;
@@ -69,7 +69,7 @@
   transition: 1s;
   transition-timing-function: ease-in-out;
 }
-@media (max-width: 768px) {
+@media (max-width: 390px) {
   .modal-bg-two {
     width: 200vh;
     height: 200vh;
@@ -92,7 +92,7 @@
   transition: 1s;
   transition-timing-function: ease-in-out;
 }
-@media (max-width: 768px) {
+@media (max-width: 390px) {
   .modal-bg-three {
     width: 200vh;
     height: 200vh;
