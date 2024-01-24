@@ -42,7 +42,7 @@ const Signup = () => {
   return (
     <div className="form-component">
       {error && <div className="error-message">{error.message}</div>}
-      <form onSubmit={handleFormSubmit}>
+      <form className="form" onSubmit={handleFormSubmit}>
         <input
           className="form-input"
           placeholder="Your username"
@@ -68,7 +68,7 @@ const Signup = () => {
           onChange={handleChange}
         />
         <button
-          className="form-button"
+          className="form-button form-submit"
           style={{ cursor: "pointer" }}
           type="submit"
         >

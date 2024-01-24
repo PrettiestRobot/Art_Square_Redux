@@ -52,30 +52,32 @@ const Home = () => {
         <FeatureGallery />
         <div className="home-container">
           <HomeNavbar />
-          <div className="home-form-container">
-            <div className="home-form">
+          <div className="home-forms-container">
+            <div className="home-forms">
               <div className="home-form-header">
-                <div
-                  className={`form-selector-bg ${
-                    loginActive ? "login" : "signup"
-                  }`}
-                ></div>
-                <button
-                  className={`form-selector ${
-                    loginActive ? "active" : "inactive"
-                  }`}
-                  onClick={handleLoginClick}
-                >
-                  Login
-                </button>
-                <button
-                  className={`form-selector ${
-                    signUpActive ? "active" : "inactive"
-                  }`}
-                  onClick={handleSignUpClick}
-                >
-                  Sign Up
-                </button>
+                <div className="form-selector-container">
+                  <div
+                    className={`form-selector-active ${
+                      loginActive ? "login" : "signup"
+                    }`}
+                  ></div>
+                  <button
+                    className={`form-selector ${
+                      loginActive ? "active" : "inactive"
+                    }`}
+                    onClick={handleLoginClick}
+                  >
+                    Login
+                  </button>
+                  <button
+                    className={`form-selector ${
+                      signUpActive ? "active" : "inactive"
+                    }`}
+                    onClick={handleSignUpClick}
+                  >
+                    Sign Up
+                  </button>
+                </div>
               </div>
               <div className="form-slider-container">
                 <div

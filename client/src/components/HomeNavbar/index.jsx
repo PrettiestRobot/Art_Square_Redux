@@ -46,7 +46,9 @@ const Navbar = () => {
           <div className="nav-right">
             {Auth.loggedIn() ? (
               <>
-                <span>Hey there, {Auth.getProfile().data.username}!</span>
+                <span className="nav-greeting">
+                  Hey there, {Auth.getProfile().data.username}!
+                </span>
                 <Link className="nav-profile-picture" to={`/profile/${userId}`}>
                   <img src={user.profilePicture} alt="User profile" />
                 </Link>
