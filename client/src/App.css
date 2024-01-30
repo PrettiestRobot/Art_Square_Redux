@@ -13,6 +13,11 @@ body {
   min-height: 100vh;
   justify-content: flex-start;
 }
+@media (max-width: 390px) {
+  .main-container {
+    padding-top: 48px;
+  }
+}
 
 * {
   box-sizing: border-box;

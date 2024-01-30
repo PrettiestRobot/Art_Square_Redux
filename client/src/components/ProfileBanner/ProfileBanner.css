@@ -19,14 +19,14 @@
   background-size: cover;
   background-position: center 60%;
 }
-@media (max-width: 860px) {
+@media (max-width: 390px) {
   .profile-container {
-    max-width: 536px;
+    padding-top: 16px;
   }
 }
-@media (max-width: 584px) {
+@media (max-width: 390px) {
   .profile-container {
-    max-width: calc(100vw - 48px);
+    width: 100vw;
   }
 }
 .profile-container .profile-button-container {
@@ -68,6 +68,11 @@
 }
 .profile-container .profile-image-container {
   position: relative;
+}
+@media (max-width: 390px) {
+  .profile-container .profile-image-container {
+    margin-top: 16px;
+  }
 }
 .profile-container .profile-image-container .edit-profile-image-button {
   display: flex;

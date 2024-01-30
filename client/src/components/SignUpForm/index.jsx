@@ -41,7 +41,11 @@ const Signup = () => {
 
   return (
     <div className="form-component">
-      {error && <div className="error-message">{error.message}</div>}
+      {error && (
+        <div className="error-message-container">
+          <div className="error-message">{error.message}</div>
+        </div>
+      )}
       <form className="form" onSubmit={handleFormSubmit}>
         <input
           className="form-input"

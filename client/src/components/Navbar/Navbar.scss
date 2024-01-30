@@ -15,6 +15,10 @@ nav {
     height: 100%;
     width: 100%;
     @include spread-flexbox();
+    @include respond-to(mobile) {
+      flex-shrink: 1;
+      width: 100vw;
+    }
 
     .nav-right {
       display: flex;
@@ -22,6 +26,9 @@ nav {
       height: 100%;
       justify-content: flex-end;
       align-items: center;
+      @include respond-to(mobile) {
+        gap: 8px;
+      }
       .nav-profile-picture {
         height: 2rem;
         aspect-ratio: 1/1;
@@ -65,10 +72,19 @@ nav {
       justify-content: flex-start;
       align-items: center;
       padding-left: 24px;
+      @include respond-to(mobile) {
+        padding-left: 8px;
+      }
     }
   }
 }
 
 .nav-brand {
   height: 24px;
+}
+
+.nav-greeting {
+  @include respond-to(mobile) {
+    display: none;
+  }
 }

@@ -93,6 +93,11 @@
   align-items: center;
   width: 100%;
 }
+@media (max-width: 390px) {
+  .primary-post-btn-container {
+    width: calc(100vw - 16px);
+  }
+}
 .primary-post-btn-container .primary-post-btn {
   width: 100%;
   height: 32px;

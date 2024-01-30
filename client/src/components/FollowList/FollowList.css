@@ -5,6 +5,11 @@
   align-items: center;
   z-index: 0;
 }
+@media (max-width: 390px) {
+  .follow-list {
+    width: 100vw;
+  }
+}
 .follow-list .follow-list-grid {
   display: grid;
   grid-template-columns: repeat(12, 60px);
