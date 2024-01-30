@@ -43,14 +43,16 @@ form {
   }
 }
 
-.error-message {
-  background-color: $btn-primary;
-  color: $text-light;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 24px;
-  line-height: 18px;
+.error-message-container {
+  padding: 12px 12px 0 12px;
+  .error-message {
+    background-color: $danger;
+    color: $text-light;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    line-height: 18px;
+  }
 }

@@ -49,6 +49,8 @@ main {
 @media (max-width: 390px) {
   .home-forms-container {
     width: calc(100vw - 32px);
+    padding-top: 15vh;
+    justify-content: flex-start;
   }
 }
 .home-forms-container .home-forms {
@@ -87,16 +89,10 @@ main {
   transition: 0.5s;
   transition-timing-function: ease-in-out;
 }
-.home-forms-container
-  .home-forms
-  .home-form-header
-  .form-selector-active.login {
+.home-forms-container .home-forms .home-form-header .form-selector-active.login {
   transform: translateX(0%);
 }
-.home-forms-container
-  .home-forms
-  .home-form-header
-  .form-selector-active.signup {
+.home-forms-container .home-forms .home-form-header .form-selector-active.signup {
   transform: translateX(100%);
 }
 .home-forms-container .home-forms .form-selector {
@@ -131,6 +127,7 @@ main {
   display: flex;
   width: 390px;
   overflow: hidden;
+  justify-content: center;
 }
 @media (max-width: 390px) {
   .form-slider-container {
@@ -162,4 +159,4 @@ main {
   position: relative;
   width: 100%;
   background-color: hsl(201, 55%, 78%);
-} /*# sourceMappingURL=Home.css.map */
+}/*# sourceMappingURL=Home.css.map */

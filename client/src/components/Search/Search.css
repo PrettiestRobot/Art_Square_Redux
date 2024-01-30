@@ -5,6 +5,11 @@
   align-items: center;
   width: 100%;
 }
+@media (max-width: 390px) {
+  .searchbar {
+    width: calc(100vw - 16px);
+  }
+}
 .searchbar input {
   height: 32px;
   width: 100%;

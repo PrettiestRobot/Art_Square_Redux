@@ -43,7 +43,11 @@ const Login = () => {
 
   return (
     <div className="form-component">
-      {error && <div className="error-message">{error.message}</div>}
+      {error && (
+        <div className="error-message-container">
+          <div className="error-message">{error.message}</div>
+        </div>
+      )}
       <form onSubmit={handleFormSubmit}>
         <input
           className="form-input"

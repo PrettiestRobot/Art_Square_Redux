@@ -4,6 +4,7 @@
 .profile-page {
   @include center-flexbox(column);
   gap: 1rem;
+  width: 100%;
 }
 
 .layout-container {
@@ -28,6 +29,9 @@
   width: 796px;
   border-radius: 25px;
   overflow: hidden;
+  @include respond-to(mobile) {
+    width: calc(100vw - 16px);
+  }
   .gallery-selectors-bg {
     z-index: 0;
     position: absolute;
@@ -58,6 +62,9 @@
 
     transition: 0.5s;
     transition-timing-function: ease-in;
+    @include respond-to(mobile) {
+      width: calc((100vw - 16px) / 3);
+    }
   }
   .active {
     color: $text-light;
@@ -66,5 +73,11 @@
   }
   .inactive:hover {
     cursor: pointer;
+  }
+}
+
+#gallery-selectors-bg {
+  @include respond-to(mobile) {
+    width: calc((100vw - 16px) / 3);
   }
 }

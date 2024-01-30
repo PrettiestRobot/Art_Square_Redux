@@ -34,6 +34,7 @@ main {
 
 .home-forms-container {
   flex-direction: column;
+  // justify-content: center;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -43,6 +44,8 @@ main {
   height: 100%;
   @include respond-to("mobile") {
     width: calc(100vw - 32px);
+    padding-top: 15vh;
+    justify-content: flex-start;
   }
   .home-forms {
     flex-direction: column;
@@ -119,6 +122,7 @@ main {
   display: flex;
   width: 390px;
   overflow: hidden;
+  justify-content: center;
   @include respond-to(mobile) {
     width: calc(100vw - 32px);
   }

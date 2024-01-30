@@ -123,6 +123,7 @@ const Profile = () => {
           <div className="layout-container gallery-selectors">
             <div
               className={`gallery-selectors-bg ${gallerySelectorState}`}
+              id="gallery-selectors-bg"
             ></div>
             <button
               className={`gallery-selector ${
