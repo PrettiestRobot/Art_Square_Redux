@@ -78,6 +78,10 @@
 .primary-post-btn-container {
   @include center-flexbox(column);
   width: 100%;
+  max-width: 796px;
+  @include respond-to(tablet) {
+    max-width: 528px;
+  }
   @include respond-to(mobile) {
     width: calc(100vw - 16px);
   }

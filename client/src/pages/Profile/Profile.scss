@@ -32,6 +32,9 @@
   @include respond-to(mobile) {
     width: calc(100vw - 16px);
   }
+  @include respond-to(tablet) {
+    max-width: 528px;
+  }
   .gallery-selectors-bg {
     z-index: 0;
     position: absolute;
@@ -62,6 +65,9 @@
 
     transition: 0.5s;
     transition-timing-function: ease-in;
+    @include respond-to(tablet) {
+      max-width: calc(528px / 3);
+    }
     @include respond-to(mobile) {
       width: calc((100vw - 16px) / 3);
     }
@@ -77,6 +83,9 @@
 }
 
 #gallery-selectors-bg {
+  @include respond-to(tablet) {
+    max-width: calc(528px / 3);
+  }
   @include respond-to(mobile) {
     width: calc((100vw - 16px) / 3);
   }

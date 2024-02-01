@@ -92,8 +92,14 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 796px;
 }
-@media (max-width: 390px) {
+@media (max-width: 860px) {
+  .primary-post-btn-container {
+    max-width: 528px;
+  }
+}
+@media (max-width: 540px) {
   .primary-post-btn-container {
     width: calc(100vw - 16px);
   }

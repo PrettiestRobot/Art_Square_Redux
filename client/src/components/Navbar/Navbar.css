@@ -19,7 +19,7 @@ nav .nav-contents {
   justify-content: space-between;
   align-items: center;
 }
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   nav .nav-contents {
     flex-shrink: 1;
     width: 100vw;
@@ -32,7 +32,7 @@ nav .nav-contents .nav-right {
   justify-content: flex-end;
   align-items: center;
 }
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   nav .nav-contents .nav-right {
     gap: 8px;
   }
@@ -82,7 +82,7 @@ nav .nav-contents .nav-left {
   align-items: center;
   padding-left: 24px;
 }
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   nav .nav-contents .nav-left {
     padding-left: 8px;
   }
@@ -92,7 +92,7 @@ nav .nav-contents .nav-left {
   height: 24px;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   .nav-greeting {
     display: none;
   }

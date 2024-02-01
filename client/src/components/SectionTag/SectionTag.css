@@ -2,8 +2,19 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  max-width: 796px;
   border-top: 1px solid hsl(0, 90%, 70%);
   margin-top: 0.5rem;
+}
+@media (max-width: 860px) {
+  .section-tag-container {
+    max-width: 528px;
+  }
+}
+@media (max-width: 540px) {
+  .section-tag-container {
+    width: calc(100vw - 16px);
+  }
 }
 .section-tag-container .section-tag {
   display: flex;

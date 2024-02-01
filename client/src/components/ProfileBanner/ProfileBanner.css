@@ -1,9 +1,20 @@
 .profile-banner {
   width: 100%;
+  max-width: 796px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 860px) {
+  .profile-banner {
+    max-width: 528px;
+  }
+}
+@media (max-width: 540px) {
+  .profile-banner {
+    max-width: 100vw;
+  }
 }
 
 .profile-container {
@@ -19,14 +30,10 @@
   background-size: cover;
   background-position: center 60%;
 }
-@media (max-width: 390px) {
-  .profile-container {
-    padding-top: 16px;
-  }
-}
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   .profile-container {
     width: 100vw;
+    padding-top: 16px;
   }
 }
 .profile-container .profile-button-container {
@@ -69,7 +76,7 @@
 .profile-container .profile-image-container {
   position: relative;
 }
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   .profile-container .profile-image-container {
     margin-top: 16px;
   }
