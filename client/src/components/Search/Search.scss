@@ -4,8 +4,12 @@
 .searchbar {
   @include center-flexbox(row);
   width: 100%;
+  max-width: 796px;
   @include respond-to(mobile) {
     width: calc(100vw - 16px);
+  }
+  @include respond-to(tablet) {
+    max-width: 528px;
   }
   input {
     height: 32px;

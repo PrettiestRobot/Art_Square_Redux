@@ -5,8 +5,15 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  max-width: 796px;
   border-top: 1px solid $btn-primary;
   margin-top: 0.5rem;
+  @include respond-to(tablet) {
+    max-width: 528px;
+  }
+  @include respond-to(mobile) {
+    width: calc(100vw - 16px);
+  }
   .section-tag {
     display: flex;
     background-color: $btn-primary;

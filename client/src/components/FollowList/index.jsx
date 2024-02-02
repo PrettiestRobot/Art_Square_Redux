@@ -1,11 +1,29 @@
 import "./FollowList.css";
 import { Link } from "react-router-dom";
+import { useState, useLayoutEffect, useRef } from "react";
 import { useQuery } from "@apollo/client";
 import Heart from "../../assets/images/heart-rating.svg";
 import BrokenHeart from "../../assets/images/broken-heart-rating.svg";
 import { QUERY_FOLLOWED_USERS } from "../../utils/queries";
 
 const FollowList = ({ FollowedIds = [] }) => {
+  const [rightFollowButtonActive, setRightFollowButtonActive] = useState(true);
+  const [leftFollowButtonActive, setLeftFollowButtonActive] = useState(true);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const followListGridRef = useRef();
+
+  // Scrolloing functionality
+  const handleScroll = (scrollAmount) => {
+    const newScrollPosition = scrollPosition + scrollAmount;
+
+    setScrollPosition(newScrollPosition);
+
+    followListGridRef.current.scrollLeft = newScrollPosition;
+  };
+
   // Use the useQuery hook to fetch data
   const { data, loading, error } = useQuery(QUERY_FOLLOWED_USERS, {
     variables: { ids: FollowedIds },
@@ -39,7 +57,23 @@ const FollowList = ({ FollowedIds = [] }) => {
     };
   });
 
-  console.log(followedUsersAudited);
+  useLayoutEffect(() => {
+    if (followListGridRef.current) {
+      setScrollWidth(followListGridRef.current.offsetWidth);
+    }
+
+    const handleResize = () => {
+      if (followListGridRef.current) {
+        setScrollWidth(followListGridRef.current.offsetWidth);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [followedUsersAudited]);
 
   // Handle loading state
   if (loading) {
@@ -62,7 +96,20 @@ const FollowList = ({ FollowedIds = [] }) => {
   // Render the list of followed users
   return (
     <div className="follow-list">
-      <div className="follow-list-grid">
+      <div className="follow-list-button ">
+        <div
+          className={`follow-button-left ${
+            leftFollowButtonActive ? "follow-button-active" : ""
+          }`}
+          onClick={() => handleScroll(-scrollWidth / 2)}
+        >
+          &lt;
+        </div>
+      </div>
+      <div
+        className="follow-list-grid follow-list-snaps-inline"
+        ref={followListGridRef}
+      >
         {followedUsersAudited.map((user) => (
           <Link
             to={`/profile/${user._id}`}
@@ -77,6 +124,16 @@ const FollowList = ({ FollowedIds = [] }) => {
             </div>
           </Link>
         ))}
+      </div>
+      <div className="follow-list-button ">
+        <div
+          className={`follow-button-right ${
+            rightFollowButtonActive ? "follow-button-active" : ""
+          }`}
+          onClick={() => handleScroll(scrollWidth / 2)}
+        >
+          &gt;
+        </div>
       </div>
     </div>
   );

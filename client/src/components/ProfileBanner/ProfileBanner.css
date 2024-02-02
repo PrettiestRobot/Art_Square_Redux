@@ -1,9 +1,20 @@
 .profile-banner {
   width: 100%;
+  max-width: 796px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 860px) {
+  .profile-banner {
+    max-width: 528px;
+  }
+}
+@media (max-width: 540px) {
+  .profile-banner {
+    max-width: 100vw;
+  }
 }
 
 .profile-container {
@@ -19,14 +30,10 @@
   background-size: cover;
   background-position: center 60%;
 }
-@media (max-width: 390px) {
-  .profile-container {
-    padding-top: 16px;
-  }
-}
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   .profile-container {
     width: 100vw;
+    padding-top: 16px;
   }
 }
 .profile-container .profile-button-container {
@@ -69,7 +76,7 @@
 .profile-container .profile-image-container {
   position: relative;
 }
-@media (max-width: 390px) {
+@media (max-width: 540px) {
   .profile-container .profile-image-container {
     margin-top: 16px;
   }
@@ -185,7 +192,7 @@
   padding: 1rem;
   gap: 0.625rem;
 }
-.profile-image-form-container form input {
+.profile-image-form-container form .profile-image-update-form-input {
   width: 100%;
   padding: 0.75rem;
   color: #1a1a1a;
@@ -194,9 +201,20 @@
   border: 1px solid #484848;
   border-radius: 0.3rem;
 }
-.profile-image-form-container form button {
+.profile-image-form-container form .profile-image-update-form-button {
+  text-align: center;
+  font-weight: 700;
   width: 100%;
-  font-weight: 600;
+  padding: 12px;
+  font-size: 1rem;
+}
+.profile-image-form-container form .profile-image-update-form-button.form-submit {
+  background-color: hsl(0, 90%, 70%);
+  color: hsl(50, 46%, 95%);
+  border: none;
+}
+.profile-image-form-container form .profile-image-update-form-button.form-submit:hover {
+  background-color: hsl(0, 90%, 65%);
 }
 
 .profile-rating {

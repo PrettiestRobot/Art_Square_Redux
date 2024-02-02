@@ -1,29 +1,42 @@
 .follow-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   z-index: 0;
+  width: 100%;
+  width: 796px;
+  justify-content: space-between;
 }
-@media (max-width: 390px) {
+@media (max-width: 860px) {
   .follow-list {
-    width: 100vw;
+    max-width: 528px;
+  }
+}
+@media (max-width: 540px) {
+  .follow-list {
+    width: calc(100vw - 16px);
   }
 }
 .follow-list .follow-list-grid {
   display: grid;
-  grid-template-columns: repeat(12, 60px);
-  gap: 6px;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  gap: 16px;
+  width: 720px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 @media (max-width: 860px) {
   .follow-list .follow-list-grid {
-    grid-template-columns: repeat(8, 60px);
+    gap: 16px;
   }
 }
-@media (max-width: 584px) {
-  .follow-list .follow-list-grid {
-    grid-template-columns: repeat(8, 60px);
-  }
+.follow-list .follow-list-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .followed-user-card {
@@ -33,10 +46,12 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  height: 76px;
+  width: 76px;
 }
 .followed-user-card .followed-user-card-left {
   overflow: hidden;
-  height: 60px;
+  height: 76px;
   border-radius: 40px;
   aspect-ratio: 1/1;
 }
@@ -80,14 +95,60 @@
 
 .follower-icon-box {
   position: absolute;
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   bottom: -2px;
-  right: -2px;
+  right: -1px;
 }
 .follower-icon-box img {
   max-width: 100%;
   max-height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.follow-list-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76px;
+  min-width: 38px;
+}
+@media (max-width: 540px) {
+  .follow-list-button {
+    display: none;
+  }
+}
+.follow-list-button .follow-button-left,
+.follow-list-button .follow-button-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(50, 46%, 95%);
+  font-weight: 700;
+  background-color: hsl(228, 45%, 10%);
+  padding: 6px;
+  border-radius: 25px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0;
+}
+.follow-list-button .follow-button-left.follow-button-active,
+.follow-list-button .follow-button-right.follow-button-active {
+  opacity: 0.25;
+  pointer-events: all;
+}
+.follow-list-button .follow-button-left.follow-button-active:hover,
+.follow-list-button .follow-button-right.follow-button-active:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.follow-list-snaps-inline {
+  scroll-snap-type: inline mandatory;
+}
+
+.follow-list-snaps-inline > * {
+  scroll-snap-align: start;
 }/*# sourceMappingURL=FollowList.css.map */
