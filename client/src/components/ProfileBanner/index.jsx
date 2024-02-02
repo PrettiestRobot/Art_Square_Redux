@@ -96,29 +96,29 @@ const ProfileBanner = ({ user, userRating }) => {
     <>
       <div className="profile-banner">
         <div className="profile-container">
-          <div className="profile-button-container">
-            {userId && userId !== user._id ? (
-              <div>
-                {followData?.isUserFollowed ? (
-                  <button
-                    className="follow-button"
-                    onClick={() => handleRemoveFollow(user._id)}
-                  >
-                    <div className="follow-left">Unfollow</div>
-                    <div className="follow-right">-</div>
-                  </button>
-                ) : (
-                  <button
-                    className="follow-button"
-                    onClick={() => handleAddFollow(user._id)}
-                  >
-                    <div className="follow-left">Follow</div>
-                    <div className="follow-right">+</div>
-                  </button>
-                )}
-              </div>
-            ) : null}
-          </div>
+          {userId && userId !== user._id ? (
+            <div className="profile-button-container">
+              {followData?.isUserFollowed ? (
+                <button
+                  className="follow-button"
+                  id="follow-button"
+                  onClick={() => handleRemoveFollow(user._id)}
+                >
+                  <div className="follow-left">Unfollow</div>
+                  <div className="follow-right">-</div>
+                </button>
+              ) : (
+                <button
+                  className="follow-button"
+                  id="follow-button"
+                  onClick={() => handleAddFollow(user._id)}
+                >
+                  <div className="follow-left">Follow</div>
+                  <div className="follow-right">+</div>
+                </button>
+              )}
+            </div>
+          ) : null}
 
           <div className="profile-image-container">
             {userId && userId === user._id ? (
@@ -168,11 +168,17 @@ const ProfileBanner = ({ user, userRating }) => {
           <div className="profile-image-form-container">
             <form onSubmit={handleSubmit}>
               <input
+                className="profile-image-update-form-input"
                 type="file"
                 accept="image/*"
                 onChange={handleSelectFile}
               ></input>
-              <button type="submit">Update Profile Picture</button>
+              <button
+                className="profile-image-update-form-button"
+                type="submit"
+              >
+                Update Profile Picture
+              </button>
             </form>
           </div>
         </div>

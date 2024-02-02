@@ -28,9 +28,20 @@
       @include center-flexbox(column);
       gap: 0.625rem;
 
-      button {
+      .post-btn {
+        text-align: center;
+        font-weight: 700;
         width: 100%;
-        transition: 0.2s ease-in-out;
+        padding: 12px;
+        font-size: 1rem;
+        &.form-submit {
+          background-color: $btn-primary;
+          color: $text-light;
+          border: none;
+          &:hover {
+            background-color: $btn-primary-hover;
+          }
+        }
       }
     }
     .post-form-login {

@@ -39,9 +39,20 @@
   align-items: center;
   gap: 0.625rem;
 }
-.form-post-modal .form-post-container .form-add-post button {
+.form-post-modal .form-post-container .form-add-post .post-btn {
+  text-align: center;
+  font-weight: 700;
   width: 100%;
-  transition: 0.2s ease-in-out;
+  padding: 12px;
+  font-size: 1rem;
+}
+.form-post-modal .form-post-container .form-add-post .post-btn.form-submit {
+  background-color: hsl(0, 90%, 70%);
+  color: hsl(50, 46%, 95%);
+  border: none;
+}
+.form-post-modal .form-post-container .form-add-post .post-btn.form-submit:hover {
+  background-color: hsl(0, 90%, 65%);
 }
 .form-post-modal .form-post-container .post-form-login {
   color: hsl(0, 0%, 95%);

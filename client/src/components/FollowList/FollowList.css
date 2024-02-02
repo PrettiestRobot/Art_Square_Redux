@@ -5,11 +5,17 @@
   align-items: center;
   z-index: 0;
   width: 100%;
-  max-width: 796px;
+  width: 796px;
+  justify-content: space-between;
+}
+@media (max-width: 860px) {
+  .follow-list {
+    max-width: 528px;
+  }
 }
 @media (max-width: 540px) {
   .follow-list {
-    width: 100vw;
+    width: calc(100vw - 16px);
   }
 }
 .follow-list .follow-list-grid {
@@ -20,18 +26,13 @@
   overflow-y: hidden;
   overscroll-behavior-inline: contain;
   gap: 16px;
+  width: 720px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 @media (max-width: 860px) {
   .follow-list .follow-list-grid {
-    max-width: 452px;
     gap: 16px;
-  }
-}
-@media (max-width: 540px) {
-  .follow-list .follow-list-grid {
-    width: calc(100vw - 16px);
   }
 }
 .follow-list .follow-list-grid::-webkit-scrollbar {
@@ -45,6 +46,8 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  height: 76px;
+  width: 76px;
 }
 .followed-user-card .followed-user-card-left {
   overflow: hidden;
@@ -104,7 +107,7 @@
      object-fit: contain;
 }
 
-.follow-button {
+.follow-list-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,12 +115,12 @@
   min-width: 38px;
 }
 @media (max-width: 540px) {
-  .follow-button {
+  .follow-list-button {
     display: none;
   }
 }
-.follow-button .follow-button-left,
-.follow-button .follow-button-right {
+.follow-list-button .follow-button-left,
+.follow-list-button .follow-button-right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,13 +134,13 @@
   pointer-events: none;
   opacity: 0;
 }
-.follow-button .follow-button-left.follow-button-active,
-.follow-button .follow-button-right.follow-button-active {
+.follow-list-button .follow-button-left.follow-button-active,
+.follow-list-button .follow-button-right.follow-button-active {
   opacity: 0.25;
   pointer-events: all;
 }
-.follow-button .follow-button-left.follow-button-active:hover,
-.follow-button .follow-button-right.follow-button-active:hover {
+.follow-list-button .follow-button-left.follow-button-active:hover,
+.follow-list-button .follow-button-right.follow-button-active:hover {
   opacity: 0.5;
   cursor: pointer;
 }
