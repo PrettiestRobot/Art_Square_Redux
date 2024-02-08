@@ -12,7 +12,7 @@
     max-width: 528px;
   }
   @include respond-to(mobile) {
-    width: calc(100vw - 16px);
+    width: $mobile-width;
   }
   .section-tag {
     display: flex;

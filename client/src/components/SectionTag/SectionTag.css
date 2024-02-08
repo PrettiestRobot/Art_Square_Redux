@@ -13,7 +13,7 @@
 }
 @media (max-width: 540px) {
   .section-tag-container {
-    width: calc(100vw - 16px);
+    width: calc(100vw - 48px);
   }
 }
 .section-tag-container .section-tag {

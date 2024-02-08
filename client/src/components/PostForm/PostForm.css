@@ -112,7 +112,7 @@
 }
 @media (max-width: 540px) {
   .primary-post-btn-container {
-    width: calc(100vw - 16px);
+    width: calc(100vw - 48px);
   }
 }
 .primary-post-btn-container .primary-post-btn {

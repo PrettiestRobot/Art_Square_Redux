@@ -41,7 +41,7 @@
 }
 @media (max-width: 540px) {
   .gallery-selectors {
-    width: calc(100vw - 16px);
+    width: calc(100vw - 48px);
   }
 }
 @media (max-width: 860px) {
@@ -86,7 +86,7 @@
 }
 @media (max-width: 540px) {
   .gallery-selectors .gallery-selector {
-    width: calc((100vw - 16px) / 3);
+    width: calc(100vw - 48px)/3;
   }
 }
 .gallery-selectors .active {
