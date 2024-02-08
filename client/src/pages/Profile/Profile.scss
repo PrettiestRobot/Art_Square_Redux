@@ -30,7 +30,7 @@
   border-radius: 25px;
   overflow: hidden;
   @include respond-to(mobile) {
-    width: calc(100vw - 16px);
+    width: $mobile-width;
   }
   @include respond-to(tablet) {
     max-width: 528px;
@@ -69,7 +69,7 @@
       max-width: calc(528px / 3);
     }
     @include respond-to(mobile) {
-      width: calc((100vw - 16px) / 3);
+      width: $mobile-width / 3;
     }
   }
   .active {

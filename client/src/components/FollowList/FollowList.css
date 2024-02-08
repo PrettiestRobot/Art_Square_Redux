@@ -15,7 +15,7 @@
 }
 @media (max-width: 540px) {
   .follow-list {
-    width: calc(100vw - 16px);
+    width: calc(100vw - 48px);
   }
 }
 .follow-list .follow-list-grid {
