@@ -15,6 +15,9 @@
   background-color: rgba(26, 26, 26, 0.75);
   backdrop-filter: blur(10px);
   transition: 0.3s ease-in-out;
+  @include respond-to(tablet) {
+    width: 100vw;
+  }
   .form-post-container {
     @include center-flexbox(column);
     width: fit-content;
