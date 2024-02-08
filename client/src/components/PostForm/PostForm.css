@@ -17,6 +17,11 @@
           backdrop-filter: blur(10px);
   transition: 0.3s ease-in-out;
 }
+@media (max-width: 860px) {
+  .form-post-modal {
+    width: 100vw;
+  }
+}
 .form-post-modal .form-post-container {
   display: flex;
   flex-direction: column;
