@@ -4,6 +4,7 @@
 .gallery {
   @include center-flexbox(column);
   z-index: 0;
+  margin-bottom: 24px;
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 260px);

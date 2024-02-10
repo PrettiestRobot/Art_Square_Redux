@@ -10,8 +10,6 @@ import CommentForm from "../../components/CommentForm";
 import Auth from "../../utils/auth";
 import { QUERY_SINGLE_POST } from "../../utils/queries";
 import { ADD_TAG_TO_POST, REMOVE_TAG_FROM_POST } from "../../utils/mutations";
-import NavBrand from "../../assets/images/desktop_brand.svg";
-import { Link } from "react-router-dom";
 
 const SinglePost = ({ closeModal, postId }) => {
   const [tagInput, setTagInput] = useState("");
@@ -19,19 +17,19 @@ const SinglePost = ({ closeModal, postId }) => {
 
   useEffect(() => {
     let timer;
-    const modal = document.querySelector(".show-card-modal");
-    const spContainer = document.querySelector(".show-card-container");
+    const modal = document.querySelector(".sp-modal");
+    const spContainer = document.querySelector(".sp-container");
     if (modal) {
       // Add a slight delay before adding the class to allow the DOM to update
       timer = setTimeout(() => {
-        modal.classList.add("show-card-modal-visible");
-        spContainer.classList.add("show-card-modal-visible");
+        modal.classList.add("sp-modal-visible");
+        spContainer.classList.add("sp-modal-visible");
       }, 10); // A delay of 10 milliseconds
     }
     return () => {
       if (modal) {
-        modal.classList.remove("show-card-modal-visible");
-        spContainer.classList.remove("show-card-modal-visible");
+        modal.classList.remove("sp-modal-visible");
+        spContainer.classList.remove("sp-modal-visible");
       }
       clearTimeout(timer); // Clear the timeout if the component unmounts before the class is added
     };
@@ -110,50 +108,9 @@ const SinglePost = ({ closeModal, postId }) => {
   };
 
   return (
-    <div className="show-card-modal" onClick={closeModal}>
-      <div className="show-card-mobile-nav">
-        <div className="nav-contents">
-          <div className="nav-left">
-            <Link to="/">
-              <img className="nav-brand" src={NavBrand} alt="Art Square Logo" />
-            </Link>
-          </div>
-          <div className="nav-right">
-            <button className="nav-btn" onClick={closeModal}>
-              Back
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="show-card-container">
-        <div className="show-card-header">
-          <div className="show-card-header-left">
-            <div className="show-card-header-left-image-container">
-              <img
-                className="show-card-header-left-image"
-                src={post.postAuthor.profilePicture}
-              />
-            </div>
-            <h4 className="show-card-header-left-username">
-              {post.postAuthor.username}
-            </h4>
-          </div>
-          <div className="show-card-header-title">
-            <h3>{post.postName}</h3>
-          </div>
-          <div className="show-card-header-right">
-            <div className="show-card-rating-icon-box">
-              <img
-                className="show-card-rating-icon"
-                src={post.averageRating >= 2 ? Heart : BrokenHeart}
-              />
-            </div>
-            <div className="show-card-average">{`${Math.round(
-              post.averageRating
-            )}/5`}</div>
-          </div>
-        </div>
-        <div className="show-card-image-container">
+    <div className="sp-modal" onClick={closeModal}>
+      <div className="sp-container">
+        <div className="sp-image-container">
           <div className="tags-container">
             <div
               className={`tag-form-container ${
@@ -188,7 +145,7 @@ const SinglePost = ({ closeModal, postId }) => {
                   className={`form-tags ${tagListToggle ? "tag-active" : ""}`}
                   onSubmit={handleTagSubmit}
                 >
-                  <button type="submit">Tag</button>
+                  <button type="submit">Add Tags</button>
                   <input
                     type="text"
                     value={tagInput}
@@ -199,12 +156,30 @@ const SinglePost = ({ closeModal, postId }) => {
               ) : null}
             </div>
           </div>
-          <img className="show-card-image" src={post.imageUrl} />
+          <img className="sp-image" src={post.imageUrl}></img>
         </div>
-        <div className="show-card-comment-list">
+        <div className="sp-container-column">
+          <div className="sp-header">
+            <div className="sp-header-left">
+              <div className="sp-post-author">
+                <div className="sp-author-image-container">
+                  <img src={post.postAuthor.profilePicture} />
+                </div>
+                <h4>{post.postAuthor.username}</h4>
+              </div>
+            </div>
+            <h3 className="sp-title">{post.postName}</h3>
+            <div className="sp-header-right">
+              <div className="sp-icon-box">
+                <img src={post.averageRating >= 2 ? Heart : BrokenHeart} />
+              </div>
+              <div className="sp-card-post-average">{`${Math.round(
+                post.averageRating
+              )}/5`}</div>
+            </div>
+          </div>
+
           <CommentList comments={post.comments} />
-        </div>
-        <div className="show-card-comment-form">
           <CommentForm thisPostId={post._id} />
         </div>
       </div>

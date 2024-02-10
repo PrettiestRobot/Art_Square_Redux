@@ -4,6 +4,7 @@
 .gallery {
   @include center-flexbox(column);
   // padding: 2rem;
+  margin-bottom: 24px;
   z-index: 0;
   .gallery-grid {
     display: grid;
