@@ -5,10 +5,12 @@
   @include center-flexbox(column);
   // padding: 2rem;
   z-index: 0;
+  margin-bottom: 24px;
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 260px);
     gap: 8px;
+
     @media (max-width: 860px) {
       grid-template-columns: repeat(2, 260px);
     }

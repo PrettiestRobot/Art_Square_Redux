@@ -59,37 +59,73 @@ const CommentForm = ({ thisPostId }) => {
   };
 
   return (
-    <div className="comment-form-component">
+    // <div className="comment-form-component">
+    //   {Auth.loggedIn() ? (
+    //     <div className="comment-form-container">
+    //       <form className="comment-form" onSubmit={handleFormSubmit}>
+    //         <div className="comment-input-container">
+    //           <div className="current-user-image">
+    //             <img src={currentUser} />
+    //           </div>
+    //           <textarea
+    //             name="commentText"
+    //             placeholder="Add your comment..."
+    //             value={formState.commentText}
+    //             className="form-input"
+    //             style={{ lineHeight: "1.5", resize: "vertical" }}
+    //             onChange={handleChange}
+    //           ></textarea>
+    //           <button className="send-button" type="submit">
+    //             <img src={Send} />
+    //           </button>
+    //         </div>
+    //       </form>
+    //     </div>
+    //   ) : (
+    //     <div className="comment-form-container">
+    //       <p>You need to be logged in to share your posts.</p>
+    //       <p>
+    //         Please <Link to="/">login</Link> or <Link to="/">signup.</Link>
+    //       </p>
+    //     </div>
+    //   )}
+    // </div>
+    <>
       {Auth.loggedIn() ? (
-        <div className="comment-form-container">
-          <form className="comment-form" onSubmit={handleFormSubmit}>
-            <div className="comment-input-container">
-              <div className="current-user-image">
-                <img src={currentUser} />
-              </div>
-              <textarea
-                name="commentText"
-                placeholder="Add your comment..."
-                value={formState.commentText}
-                className="form-input"
-                style={{ lineHeight: "1.5", resize: "vertical" }}
-                onChange={handleChange}
-              ></textarea>
-              <button className="send-button" type="submit">
-                <img src={Send} />
-              </button>
-            </div>
-          </form>
-        </div>
+        <form className="comment-form" onSubmit={handleFormSubmit}>
+          <div className="comment-form-user-image-container">
+            <img
+              className="comment-form-user-image-container"
+              src={currentUser}
+            />
+          </div>
+          <textarea
+            name="commentText"
+            placeholder="   Add your comment..."
+            value={formState.commentText}
+            className="comment-form-input"
+            onChange={handleChange}
+          ></textarea>
+          <button className="comment-submit-button" type="submit">
+            <img className="comment-submit-button-icon" src={Send} />
+          </button>
+        </form>
       ) : (
-        <div className="comment-form-container">
+        <div className="comment-form-validation">
           <p>You need to be logged in to share your posts.</p>
           <p>
-            Please <Link to="/">login</Link> or <Link to="/">signup.</Link>
+            Please{" "}
+            <Link className="validation-link" to="/">
+              login
+            </Link>{" "}
+            or{" "}
+            <Link className="validation-link" to="/">
+              signup.
+            </Link>
           </p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
