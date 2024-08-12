@@ -5,16 +5,16 @@ const FeaturedGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     {
-      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F657167fc01d8362bba39738c%2F2023-12-07T06%3A37%3A06.205Z_5230c665-56f4-412d-984c-6f8d0691b8c1?alt=media&token=ce23afb4-f03c-406a-b803-e969c7079404",
+      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F66b986a3955e795e09ffd24d%2F2024-08-12T03%3A52%3A58.685Z_85387071-866c-4090-a3c9-4699556355cd?alt=media&token=514baf07-1847-47cc-b0a8-abf451311079",
       title: "Band Practice",
     },
     {
-      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F65712ea0bf130e68dc460d2a%2F2023-12-07T06%3A35%3A09.720Z_3c8e74a4-2685-427f-8d42-b756c8a1f414?alt=media&token=dcbf8bf1-4599-40dd-ba20-2f8a70babde1",
+      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F66b9840f955e795e09ffd171%2F2024-08-12T03%3A43%3A04.911Z_d73216d0-7411-4f21-a2a7-18f949cff36a?alt=media&token=c9730fb9-8828-4846-92c7-649ad6ba9034",
       title: "We The Wild",
     },
     {
-      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F65712ea0bf130e68dc460d2a%2F2023-12-07T06%3A34%3A43.125Z_7772715a-4bbf-4694-93d3-644a79b3e2fc?alt=media&token=cedacfcb-374f-4145-b9fe-ab5434509062",
-      title: "Random Number Gods",
+      url: "https://firebasestorage.googleapis.com/v0/b/artsquare-bb6b4.appspot.com/o/images%2F66b9840f955e795e09ffd171%2F2024-08-12T03%3A41%3A59.710Z_677c2ae6-f766-4317-9082-328a90ee9da2?alt=media&token=4f01dca1-cc9a-460f-8318-e7a19d746d45",
+      title: "Die",
     },
   ];
   useEffect(() => {
